@@ -88,7 +88,7 @@
                   
                     <div class="item active">
                   
-                    <img id="carousel-img0" src="/css/images/home-bg.jpg">
+                    <img id="carousel-img0" src="/css/images/sea.jpg">
                   </div>
 
                   <!-- 自适应大图 -->
@@ -109,7 +109,7 @@
                   
                     <div class="item">
                   
-                    <img id="carousel-img1" src="/css/images/sample.jpg">
+                    <img id="carousel-img1" src="/css/images/city.jpg">
                   </div>
 
                   <!-- 自适应大图 -->
@@ -130,7 +130,7 @@
                   
                     <div class="item">
                   
-                    <img id="carousel-img2" src="https://source.unsplash.com/collection/954550/1920x1080">
+                    <img id="carousel-img2" src="/css/images/city1.jpg">
                   </div>
 
                   <!-- 自适应大图 -->
@@ -144,6 +144,27 @@
                         } else {
                           imageTag2.style.height = document.body.clientHeight + "px";
                           imageTag2.style.marginLeft = -(document.body.clientHeight * img2.width / img2.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img3" src="/css/images/home.jpg">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img3 = new Image();
+                      var imageTag3 = document.getElementById("carousel-img3");
+                      img3.src = imageTag3.src;
+                      img3.onload=function(){
+                        if (img3.width / img3.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag3.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag3.style.height = document.body.clientHeight + "px";
+                          imageTag3.style.marginLeft = -(document.body.clientHeight * img3.width / img3.height - document.body.clientWidth) / 2 + "px";
                         }
                       };
                   </script>
@@ -261,6 +282,94 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-ECMAScript 关键字整理"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/04/23/ECMAScript 关键字整理/">ECMAScript 关键字整理（部分）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/04/23/ECMAScript 关键字整理/" class="article-date">
+	  <time datetime="2018-04-23T12:31:00.000Z" itemprop="datePublished">2018-04-23</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/program/">编程</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ECMAScript-关键字"><a href="#ECMAScript-关键字" class="headerlink" title="ECMAScript 关键字"></a>ECMAScript 关键字</h2><ul>
+<li>function<br><strong>解释：</strong><br>function 关键字用于创建一个函数。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>this<br><strong>解释：</strong><br>this 关键字在 js 中是指当前行为执行的主体。</p>
+<ul>
+<li>this 指向<ol>
+<li>普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。</li>
+<li>构造函数中 this 指向构造函数实例化出来的对象，原型方法中的 this 也是指向实例化对象。</li>
+<li>方法调用中 this 指向调用该方法的对象。</li>
+<li>事件处理函数中的 this 指向触发事件的对象（事件源）。</li>
+<li>定时器中的 this 指向 window 。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>new<br><strong>解释：</strong><br>new 关键字用于搭配构造函数创建实例化对象。</p>
+<ul>
+<li>new 关键字执行过程<ol>
+<li>创建空对象。</li>
+<li>让 this 指向空对象。</li>
+<li>执行构造函数，给创建的新对象添加属性和方法。</li>
+<li>返回对象给函数的调用者。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>return<br><strong>解释：</strong><br>return 关键字用于函数中，使用 return 可以返回需要返回的值，return 后面可以是任意的 js 数据类型。<br>return 后面不写数据会返回 undefined 。<br>return 后面的代码不再执行，直接结束函数。<br>return 关键字作用范围是函数内。<br><strong>语法：</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line">  return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <!-- ECMAScript 关键字
+function解释：function 关键字用于创建一个函数。语法：
+
+123function()&#123;&#125;
+
+this解释：this 关键字在 js 中是指当前行为执行的主体。
+
+this 指向
+普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。
+构造函数中 thi......  -->
+        <p class="article-more-link">
+          <a href="/2018/04/23/ECMAScript 关键字整理/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript-ECMAScript/">JavaScript ECMAScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-我的设计作品"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -288,7 +397,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ooyqb4rqr.bkt.clouddn.com/blog/20170425/200449964.jpg?imageMogr2/thumbnail/!100p" alt="队旗"><br>本人热爱编程，设计方面略懂一点，也比较热爱骑行。上图是我以前为我们学校的骑行车队——周师如风车队（非官方组织）设计的队旗。</p>
+        <p><img src="https://blog-fe.oss-cn-shanghai.aliyuncs.com/new-flag.jpg?Expires=1586104310&amp;OSSAccessKeyId=TMP.3KhCeP6nat2e6pgdaXU8wv4g7cozuErtPAF9GwcmVPgnPZw57xTPApXicq1syuB4G6P3CcZNhGPnvqkVfmze8ZZKvdrYJ5&amp;Signature=tJrQOUC0pl4ds382hhporhfyRaQ%3D" alt="队旗"><br>本人喜欢前端开发，大学专业是软件工程（数字多媒体方向），对设计方面略懂一点，也比较热爱骑行。上图是我以前为我们学校的骑行车队——周师如风车队（非官方组织）设计的队旗，Logo 部分有借鉴一位网友的设计。</p>
 
       
     </div>
@@ -314,7 +423,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2017/04/23/Web前端的发展现状及未来机遇/">Web前端的发展现状及未来机遇</a>
+      <a class="article-title" href="/2017/04/23/Web前端的发展现状及未来机遇/">Web 前端的发展现状及未来机遇</a>
     </h1>
   
 
@@ -327,15 +436,15 @@
 	</a>
 
       
-    <a class="article-category-link" href="/categories/program/">编程</a>
+    <a class="article-category-link" href="/categories/文章/">文章</a>
 
       
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Web前端开发的历史"><a href="#Web前端开发的历史" class="headerlink" title="Web前端开发的历史"></a>Web前端开发的历史</h3><h4 id="Web前端的由来"><a href="#Web前端的由来" class="headerlink" title="Web前端的由来"></a>Web前端的由来</h4><p>&emsp;&emsp;1991年8月,Tim Berners-Lee发布了第一个简单的,基于文本,包含几个链接的网站。但此后的网站发展一直很缓慢，这是因为早期的网页完全由单调的文本和图片所构成，对人们而言，毫无吸引力。到了2005年，互联网开始进入Web2.0时代，各种类似桌面软件的Web应用开始大量涌现，由此，网站建设发生了巨大的变革。与此同时，“前端”这个词开始在国内逐渐流行开来。</p>
-<h4 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h4><p>&emsp;&emsp;我们一直说前端，但什么是前端呢？前端可以笼统的解释为凡是通过浏览器把内容呈现给用户的统称为前端。相反贮存于服务器端的则统称为后端。<br>&emsp;&emsp;前端这个词是从网页制作演变过来的，名称上有着明显的时代特征。在互联网的演化过程中，网页制作是Web1.0时代的产物，那时网站的主要内容都是静态的，用户使用网站的行为也以浏览为主。在这个阶段，网站的内容主要是文字和图片为主，制作方法也主要是使用table和ASP。后来发展到使用HTML、CSS、JavaScript等前端技术构建页面。到现在，前端技术已经发展到HTML5、CSS3、EcmaScript6等，以后也会继续发展、继续完善。<br>&emsp;&emsp;Web前端虽然起步时间晚，但是发展势头迅猛，在各种新技术、新标准的推动下，各大互联网公司也开始重视Web产品的前端重构与开发，如淘宝、腾讯、新浪、百度、搜狐等都对自己的网站进行了重构并同时使用了HTML5中的新特性。现在开发的Web新产品的页面交互也越来越丰富，视觉效果也越来越绚丽。互联网公司除了重视前端开发之外，还在积极推动互联网技术的发展，2001～2012年，腾讯、百度及奇虎360公司先后加入了万维网联盟（W3C），共同参与互联网技术标准的研究和制定，促进了国内互联网产业的发展。<br>
-        <!-- Web前端开发的历史Web前端的由来&emsp;&emsp;1991年8月,Tim Berners-Lee发布了第一个简单的,基于文本,包含几个链接的网站。但此后的网站发展一直很缓慢，这是因为早期的网页完全由单调的文本和图片所构成，对人们而言，毫无吸引力。到了2005年，互联网开始进入Web2.0时代，各种类似桌面软件的Web应用开始大量涌现，由此，网站建设发生了巨大的变革。与此同时，“前端......  -->
+        <h2 id="Web-前端的历史"><a href="#Web-前端的历史" class="headerlink" title="Web 前端的历史"></a>Web 前端的历史</h2><h3 id="Web-前端的由来"><a href="#Web-前端的由来" class="headerlink" title="Web 前端的由来"></a>Web 前端的由来</h3><p>&emsp;&emsp;1991 年 8 月，Tim Berners-Lee 发布了第一个简单的，基于文本，包含几个链接的网站。但此后的网站发展一直很缓慢，这是因为早期的网页完全由单调的文本和图片所构成，对人们而言，毫无吸引力。到了 2005 年，互联网开始进入 Web2.0 时代，各种类似桌面软件的 Web 应用开始大量涌现，由此，网站建设发生了巨大的变革。与此同时，“前端”这个词开始在国内逐渐流行开来。</p>
+<h3 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h3><p>&emsp;&emsp;我们一直说前端，但什么是前端呢？前端可以笼统的解释为凡是通过浏览器把内容呈现给用户的统称为前端。相反贮存于服务器端的则统称为后端。<br>&emsp;&emsp;前端这个词是从网页制作演变过来的，名称上有着明显的时代特征。在互联网的演化过程中，网页制作是 Web1.0 时代的产物，那时网站的主要内容都是静态的，用户使用网站的行为也以浏览为主。在这个阶段，网站的内容主要是文字和图片为主，制作方法也主要是使用 table 和 ASP。后来发展到使用 HTML、CSS、JavaScript 等前端技术构建页面。到现在，前端技术已经发展到 HTML5、CSS3、EcmaScript6 等，以后也会继续发展、继续完善。<br>&emsp;&emsp;Web 前端虽然起步时间晚，但是发展势头迅猛，在各种新技术、新标准的推动下，各大互联网公司也开始重视 Web 产品的前端重构与开发，如淘宝、腾讯、新浪、百度、搜狐等都对自己的网站进行了重构并同时使用了 HTML5 中的新特性。现在开发的 Web 新产品的页面交互也越来越丰富，视觉效果也越来越绚丽。互联网公司除了重视前端开发之外，还在积极推动互联网技术的发展，2001 ～ 2012 年，腾讯、百度及奇虎 360 公司先后加入了万维网联盟（W3C），共同参与互联网技术标准的研究和制定，促进了国内互联网产业的发展。</p>
+        <!-- Web 前端的历史Web 前端的由来&emsp;&emsp;1991 年 8 月，Tim Berners-Lee 发布了第一个简单的，基于文本，包含几个链接的网站。但此后的网站发展一直很缓慢，这是因为早期的网页完全由单调的文本和图片所构成，对人们而言，毫无吸引力。到了 2005 年，互联网开始进入 Web2.0 时代，各种类似桌面软件的 Web 应用开始大量涌现，由此，网站建设发生了巨大的变......  -->
         <p class="article-more-link">
           <a href="/2017/04/23/Web前端的发展现状及未来机遇/#more">阅读全文</a>
         </p>
@@ -376,7 +485,7 @@
 	</a>
 
       
-    <a class="article-category-link" href="/categories/program/">编程</a>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
 
       
     </div>
@@ -387,11 +496,11 @@
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <!-- Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Qu......  -->
+        <p class="article-more-link">
+          <a href="/2017/04/10/hello-world/#more">阅读全文</a>
+        </p>
       
     </div>
     <footer class="article-footer">
@@ -422,7 +531,7 @@
   <div class="container">
       	<div class="row">
 	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 皇甫文豪&#39;S BLOG All Rights Reserved.</p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 皇甫文豪&#39;S BLOG All Rights Reserved.</p>
 	      
 	      
     		<p class="busuanzi_uv">
@@ -576,7 +685,7 @@
             皇甫文豪&#39;S BLOG
           </div>
           <div class="panel-body">
-            Copyright © 2018 YACHU All Rights Reserved.
+            Copyright © 2020 YACHU All Rights Reserved.
           </div>
         </div>
       </div>
