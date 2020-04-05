@@ -282,6 +282,340 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-Vue.js 响应式的注意事项"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/04/05/Vue.js 响应式的注意事项/">Vue.js 响应式的注意事项</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/04/05/Vue.js 响应式的注意事项/" class="article-date">
+	  <time datetime="2020-04-04T16:50:09.000Z" itemprop="datePublished">2020-04-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/program/">编程</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数组更新检测注意事项"><a href="#数组更新检测注意事项" class="headerlink" title="数组更新检测注意事项"></a>数组更新检测注意事项</h3><p>由于 JS 的限制，下列情形数组的更新不能被检测到。</p>
+<ol>
+<li>使用数组下标设置一个数组项时</li>
+<li>操作数组长度时</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    arr: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.arr[1] = &apos;x&apos;; // 不是响应式</span><br><span class="line">vm.arr.length = 2; // 不是响应式</span><br></pre></td></tr></table></figure>
+        <!-- 数组更新检测注意事项由于 JS 的限制，下列情形数组的更新不能被检测到。
+
+使用数组下标设置一个数组项时
+操作数组长度时
+
+1234567var vm = new Vue(&#123;  data: &#123;    arr: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]  &#125;&#125;)vm.arr[1] = &apos;x&ap......  -->
+        <p class="article-more-link">
+          <a href="/2020/04/05/Vue.js 响应式的注意事项/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Vue.js 之“变异”和“替换”的概念"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/04/05/Vue.js 之“变异”和“替换”的概念/">Vue.js 之“变异”和“替换”的概念</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/04/05/Vue.js 之“变异”和“替换”的概念/" class="article-date">
+	  <time datetime="2020-04-04T16:35:18.000Z" itemprop="datePublished">2020-04-05</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/program/">编程</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天在翻阅 Vue 的文档查看 watch 相关解释时，在查看到 vm.\$watch 时看到了“变异”一词。官网内容摘抄如下：</p>
+<blockquote>
+<p>注意：在变异 (不是替换) 对象或数组时，旧值将与新值相同，因为它们的引用指向同一个对象/数组。Vue 不会保留变异之前值的副本。</p>
+</blockquote>
+<p>当时内心充满了困惑，当真是不小的朋友也有很多问号？明明是我认识的词语，却又那么陌生。为了理解“变异”一词的意思，写下这篇文章。</p>
+<h2 id="什么是变异？"><a href="#什么是变异？" class="headerlink" title="什么是变异？"></a>什么是变异？</h2><blockquote>
+<p>变异方法，顾名思义，会改变调用了这些方法的原始数组。</p>
+</blockquote>
+<p>数组的变异方法包括 <code>push(), pop(), shift(), unshift(), splice(), sort(), reverse()</code>。这些变异方法也会触发视图更新。</p>
+        <!-- 前言今天在翻阅 Vue 的文档查看 watch 相关解释时，在查看到 vm.\$watch 时看到了“变异”一词。官网内容摘抄如下：
+
+注意：在变异 (不是替换) 对象或数组时，旧值将与新值相同，因为它们的引用指向同一个对象/数组。Vue 不会保留变异之前值的副本。
+
+当时内心充满了困惑，当真是不小的朋友也有很多问号？明明是我认识的词语，却又那么陌生。为了理解“变异”一词的意思，写下这篇文章......  -->
+        <p class="article-more-link">
+          <a href="/2020/04/05/Vue.js 之“变异”和“替换”的概念/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/04/04/Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？/">Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/04/04/Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？/" class="article-date">
+	  <time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished">2020-04-04</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/program/">编程</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="为什么写这篇笔记？"><a href="#为什么写这篇笔记？" class="headerlink" title="为什么写这篇笔记？"></a>为什么写这篇笔记？</h3><p>记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。</p>
+<h3 id="computed-计算属性是什么？"><a href="#computed-计算属性是什么？" class="headerlink" title="computed 计算属性是什么？"></a>computed 计算属性是什么？</h3><h4 id="computed-计算属性介绍："><a href="#computed-计算属性介绍：" class="headerlink" title="computed 计算属性介绍："></a>computed 计算属性介绍：</h4><p>computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要加 （），这是因为计算属性看起来是指向了方法（function），其实指向的是方法 return 的结果。<br>computed 计算属性的特性是计算结果会被缓存，如果 function 中依赖的响应式属性发生变化，computed 便会重新计算。注意如果依赖实例之外的属性（比如非响应式属性）则计算结果不会更新。<br>此外，如果在计算属性中使用了箭头函数，则 this 不会指向组件的实例，但在函数中依然可以将实例以函数的第一个参数访问。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">	aDouble: vm =&gt; vm.a * 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <!-- 为什么写这篇笔记？记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。
+computed 计算属性是什么？computed 计算属性介绍：computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要......  -->
+        <p class="article-more-link">
+          <a href="/2020/04/04/Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-flex 布局之 flex 1"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/04/03/flex 布局之 flex 1/">flex 布局之 &#34;flex: 1;&#34;</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/04/03/flex 布局之 flex 1/" class="article-date">
+	  <time datetime="2020-04-02T16:00:00.000Z" itemprop="datePublished">2020-04-03</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/program/">编程</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="flex-1-到底是什么意思？"><a href="#flex-1-到底是什么意思？" class="headerlink" title="flex: 1; 到底是什么意思？"></a><code>flex: 1;</code> 到底是什么意思？</h3><p>首先 flex 是 <code>flex-grow, flex-shrink, flex-basis.</code> 三个属性的简写，默认值为 <code>0 1 auto</code>。该属性有两个快捷值：<code>auto(1 1 auto)</code> 和 <code>none(0 0 auto)</code>。建议优先写 flex 属性，而不是写三个分离的属性，因为浏览器会自动计算其相关值。</p>
+<ul>
+<li><code>flex-grow</code> 默认为 0， 只能是正整数。即父元素有剩余空间也不放大元素。如果为 1，则把剩余空间的一份加给自己的宽度。</li>
+<li><code>flex-shrink</code> 默认为 1，只能是正整数。即父元素空间不足则按比例收缩。如果为 0，则不收缩</li>
+<li><code>flex-basis</code> 默认为 auto, 即元素本身的大小。这个属性定义了在分配多余空间之前，元素占据的主轴空间，浏览器根据这个属性计算是否有多余空间。可以设置为和 width 和 height 属性一样的值，比如 220px，则元素占据固定空间。</li>
+</ul>
+<p>以上大部分是我初次学习 flex 布局记下的笔记内容。</p>
+        <!-- flex: 1; 到底是什么意思？首先 flex 是 flex-grow, flex-shrink, flex-basis. 三个属性的简写，默认值为 0 1 auto。该属性有两个快捷值：auto(1 1 auto) 和 none(0 0 auto)。建议优先写 flex 属性，而不是写三个分离的属性，因为浏览器会自动计算其相关值。
+
+flex-grow 默认为 0， 只能是正整数。即父元......  -->
+        <p class="article-more-link">
+          <a href="/2020/04/03/flex 布局之 flex 1/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-记一次bug：微信小程序真机调试访问接口失败"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/04/02/记一次bug：微信小程序真机调试访问接口失败/">记一次bug：微信小程序真机调试访问接口失败</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/04/02/记一次bug：微信小程序真机调试访问接口失败/" class="article-date">
+	  <time datetime="2020-04-02T07:53:00.000Z" itemprop="datePublished">2020-04-02</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/program/">编程</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、开发情况简述："><a href="#一、开发情况简述：" class="headerlink" title="一、开发情况简述："></a>一、开发情况简述：</h3><p>后端未部署，目前开发阶段直接连同事电脑，前端由我负责。</p>
+<h3 id="二、问题描述"><a href="#二、问题描述" class="headerlink" title="二、问题描述"></a>二、问题描述</h3><p>最近在使用 uni-app 开发微信小程序时，遇到了真机调试接口访问失败的问题。一开始草草的翻了官方文档，没看出个所以然。昨天在网上搜了一下原因，记得有网友提到了防火墙的问题。今天上午我试着关闭本机的防火墙后，还是不行。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402152828136-1577363757.jpg" alt="关闭本机网络防火墙"></p>
+        <!-- 一、开发情况简述：后端未部署，目前开发阶段直接连同事电脑，前端由我负责。
+二、问题描述最近在使用 uni-app 开发微信小程序时，遇到了真机调试接口访问失败的问题。一开始草草的翻了官方文档，没看出个所以然。昨天在网上搜了一下原因，记得有网友提到了防火墙的问题。今天上午我试着关闭本机的防火墙后，还是不行。
+
+
+猛然间想到应该是要手机、电脑处于同一个网络下，我不记得昨天查的资料是否说了同一个网......  -->
+        <p class="article-more-link">
+          <a href="/2020/04/02/记一次bug：微信小程序真机调试访问接口失败/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BUG/">BUG</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2020/04/01/记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件/">记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2020/04/01/记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件/" class="article-date">
+	  <time datetime="2020-04-01T05:45:23.000Z" itemprop="datePublished">2020-04-01</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/program/">编程</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>layuiAdmin pro 使用 gulp 构建源码时, controller 里的大部分文件夹里的 js 代码没有压缩输出，但也未报错。</p>
+<h3 id="问题详述"><a href="#问题详述" class="headerlink" title="问题详述"></a>问题详述</h3><ol>
+<li>src/controller 目录结构如图：<br><img src="https://img-blog.csdnimg.cn/20200401124416977.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="src 里 controller 目录结构">
+        <!-- 前言layuiAdmin pro 使用 gulp 构建源码时, controller 里的大部分文件夹里的 js 代码没有压缩输出，但也未报错。
+问题详述
+src/controller 目录结构如图：
+执行 gulp 构建源码命令后的 dist/controller 目录结构如图，明显少了一些文件夹。
+gulpfile.js 中调用 gulp-uglify 压缩 js 的代码如图：
+cmd ......  -->
+        <p class="article-more-link">
+          <a href="/2020/04/01/记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BUG/">BUG</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-ECMAScript 关键字整理"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     

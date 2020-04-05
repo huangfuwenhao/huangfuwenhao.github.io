@@ -3,26 +3,38 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ecmascript 关键字整理（部分） | 皇甫文豪&#39;S BLOG</title>
+  <title>记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件 | 皇甫文豪&#39;S BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="JavaScript ECMAScript" />
+  <meta name="keywords" content="BUG" />
   
   
   
   
-  <meta name="description" content="ECMAScript 关键字 function解释：function 关键字用于创建一个函数。语法：  123function()&amp;#123;&amp;#125;  this解释：this 关键字在 js 中是指当前行为执行的主体。  this 指向 普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。 构造函数中 this 指">
-<meta name="keywords" content="JavaScript ECMAScript">
+  <meta name="description" content="前言layuiAdmin pro 使用 gulp 构建源码时, controller 里的大部分文件夹里的 js 代码没有压缩输出，但也未报错。 问题详述 src/controller 目录结构如图：">
+<meta name="keywords" content="BUG">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ECMAScript 关键字整理（部分）">
-<meta property="og:url" content="http://yoursite.com/2018/04/23/ECMAScript 关键字整理/index.html">
+<meta property="og:title" content="记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件">
+<meta property="og:url" content="http://yoursite.com/2020/04/01/记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件/index.html">
 <meta property="og:site_name" content="皇甫文豪&#39;S BLOG">
-<meta property="og:description" content="ECMAScript 关键字 function解释：function 关键字用于创建一个函数。语法：  123function()&amp;#123;&amp;#125;  this解释：this 关键字在 js 中是指当前行为执行的主体。  this 指向 普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。 构造函数中 this 指">
+<meta property="og:description" content="前言layuiAdmin pro 使用 gulp 构建源码时, controller 里的大部分文件夹里的 js 代码没有压缩输出，但也未报错。 问题详述 src/controller 目录结构如图：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-05T08:48:55.370Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401124416977.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401124515728.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401124657978.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401124903188.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401130442752.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401131010434.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401131932208.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401132515123.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401132940809.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401133650657.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401133903786.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2020-04-05T09:38:04.316Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ECMAScript 关键字整理（部分）">
-<meta name="twitter:description" content="ECMAScript 关键字 function解释：function 关键字用于创建一个函数。语法：  123function()&amp;#123;&amp;#125;  this解释：this 关键字在 js 中是指当前行为执行的主体。  this 指向 普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。 构造函数中 this 指">
+<meta name="twitter:title" content="记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件">
+<meta name="twitter:description" content="前言layuiAdmin pro 使用 gulp 构建源码时, controller 里的大部分文件夹里的 js 代码没有压缩输出，但也未报错。 问题详述 src/controller 目录结构如图：">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200401124416977.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70">
   
     <link rel="alternate" href="/atom.xml" title="皇甫文豪&#39;S BLOG" type="application/atom+xml">
   
@@ -162,7 +174,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-ECMAScript 关键字整理" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -170,7 +182,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      ECMAScript 关键字整理（部分）
+      记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件
     </h1>
   
 
@@ -178,8 +190,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/04/23/ECMAScript 关键字整理/" class="article-date">
-	  <time datetime="2018-04-23T12:31:00.000Z" itemprop="datePublished">2018-04-23</time>
+	<a href="/2020/04/01/记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件/" class="article-date">
+	  <time datetime="2020-04-01T05:45:23.000Z" itemprop="datePublished">2020-04-01</time>
 	</a>
 
       
@@ -195,110 +207,29 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ECMAScript-关键字"><a href="#ECMAScript-关键字" class="headerlink" title="ECMAScript 关键字"></a>ECMAScript 关键字</h2><ul>
-<li>function<br><strong>解释：</strong><br>function 关键字用于创建一个函数。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>this<br><strong>解释：</strong><br>this 关键字在 js 中是指当前行为执行的主体。</p>
-<ul>
-<li>this 指向<ol>
-<li>普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。</li>
-<li>构造函数中 this 指向构造函数实例化出来的对象，原型方法中的 this 也是指向实例化对象。</li>
-<li>方法调用中 this 指向调用该方法的对象。</li>
-<li>事件处理函数中的 this 指向触发事件的对象（事件源）。</li>
-<li>定时器中的 this 指向 window 。</li>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>layuiAdmin pro 使用 gulp 构建源码时, controller 里的大部分文件夹里的 js 代码没有压缩输出，但也未报错。</p>
+<h3 id="问题详述"><a href="#问题详述" class="headerlink" title="问题详述"></a>问题详述</h3><ol>
+<li>src/controller 目录结构如图：<br><img src="https://img-blog.csdnimg.cn/20200401124416977.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="src 里 controller 目录结构"><a id="more"></a></li>
+<li>执行 gulp 构建源码命令后的 dist/controller 目录结构如图，明显少了一些文件夹。<br><img src="https://img-blog.csdnimg.cn/20200401124515728.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="执行 gulp 命令后的 dist 下的 controller 目录结构"></li>
+<li>gulpfile.js 中调用 gulp-uglify 压缩 js 的代码如图：<br><img src="https://img-blog.csdnimg.cn/20200401124657978.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="gulpfile.js 中压缩 js 的部分代码截图"></li>
+<li>cmd 命令行中 gulp 命令执行结果截图：<br><img src="https://img-blog.csdnimg.cn/20200401124903188.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="cmd 命令行执行 gulp 命令后的结果"></li>
 </ol>
+<h3 id="原因排查"><a href="#原因排查" class="headerlink" title="原因排查"></a>原因排查</h3><h4 id="排查过程"><a href="#排查过程" class="headerlink" title="排查过程"></a>排查过程</h4><ol>
+<li>依据 layuiAdmin pro 文档，确认了 node 及 npm 没有问题，gulp 已全局安装，其依赖也已安装。</li>
+<li>确认 layuiAdmin pro 中的 gulpfile.js 代码除了引入 babel 增加处理 ES6 的代码外，没有改变。</li>
+<li>确认语法及 API 问题，经查阅资料:<br>3.1 gulp.src() 中的路径 <code>&#39;./src/**/*.js&#39;</code> 没有错误，就是查找 src 下任意文件夹里的 js 文件。<br>3.2 gulp.dest() 中文件输出路径没问题。<br>3.3 uglify() 调用没有问题。<br>3.4 gulp 引入等没有问题。</li>
+<li>尝试升级 gulp-uglify 至最新版 3.0.2 没有作用。<br><img src="https://img-blog.csdnimg.cn/20200401130442752.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="gulp-uglify 最新版本"></li>
+<li><p>依据 layuiAdmin pro 文档,确认是否由框架的缓存机制引起？虽然很可能应该无关，囧… <strong>结论是没有用，无关缓存机制的事情。</strong><br><img src="https://img-blog.csdnimg.cn/20200401131010434.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="start/index.html 中修改版本"></p>
 </li>
-</ul>
+<li><p>尝试压缩某个具体文件 <code>&#39;./src/controller/businessBasic/blackAndWhite/blackAndWhite.js&#39;</code>， 也是无效。但是事情终于有了转机。<br><img src="https://img-blog.csdnimg.cn/20200401131932208.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="dist 结果中没被压缩输出"></p>
 </li>
-<li><p>new<br><strong>解释：</strong><br>new 关键字用于搭配构造函数创建实例化对象。</p>
-<ul>
-<li>new 关键字执行过程<ol>
-<li>创建空对象。</li>
-<li>让 this 指向空对象。</li>
-<li>执行构造函数，给创建的新对象添加属性和方法。</li>
-<li>返回对象给函数的调用者。</li>
 </ol>
-</li>
-</ul>
-</li>
-<li><p>return<br><strong>解释：</strong><br>return 关键字用于函数中，使用 return 可以返回需要返回的值，return 后面可以是任意的 js 数据类型。<br>return 后面不写数据会返回 undefined 。<br>return 后面的代码不再执行，直接结束函数。<br>return 关键字作用范围是函数内。<br><strong>语法：</strong></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line">  return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li>for<br><strong>解释：</strong><br>for 关键字用于创建一个 for 循环。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>if<br><strong>解释：</strong><br>if 关键字和 else 一起用于创建一个 if else 分支语句。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if()&#123;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>else<br><strong>解释：</strong><br>一般搭配 if 使用</p>
-</li>
-<li><p>while<br><strong>解释：</strong><br>while 关键字用于创建一个 while 循环。<br><strong>语法：</strong></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>do<br><strong>解释：</strong><br>do 关键字 和 while 一起用于创建一个 do while 循环。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">do&#123;</span><br><span class="line"></span><br><span class="line">  &#125;while()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>switch<br><strong>解释：</strong><br>switch 关键字用于创建一个 switch 分支语句。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">switch (key) &#123;</span><br><span class="line">  case value:</span><br><span class="line">    break;</span><br><span class="line">  default:</span><br><span class="line">    break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>case<br><strong>解释：</strong><br>一般搭配 switch 使用</p>
-</li>
-<li><p>default<br><strong>解释：</strong><br>一般搭配 switch 使用</p>
-</li>
-<li><p>break<br><strong>解释：</strong><br>break 关键字在循环中是结束整个循环，继续执行循环后的代码。<br>在 switch 中是阻止代码向下执行，跳出 switch 语句。<br>break 关键字的作用范围是循环和 switch 语句内。<br><strong>语法：</strong></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for() &#123;</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>continue<br><strong>解释：</strong><br>continue 关键字用于结束当前的这一次循环，continue 之后的代码不再执行，继续下一次循环。<br>其作用范围循环内。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for()&#123;</span><br><span class="line">  continue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>var<br><strong>解释：</strong><br>var 关键字用于声明一个变量。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello world&apos;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>typeof<br><strong>解释：</strong><br>typeof 关键字用于获取变量的类型。<br>会返回具体的数据类型，这个返回值是字符串类型的。<br>注意：typeof 只能区分出基本数据类型和函数，不能区分出对象和数组。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof 变量</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>instanceof<br><strong>解释：</strong><br>instanceof 关键字用于判断 Object.prototype 是否出现在某个对象的原型链上。<br>简单来说就是用于检测某一个实例对象是否属于某一个构造函数，返回布尔值。</p>
-</li>
-<li><p>in<br><strong>解释：</strong><br>in 关键字用于判断一个属性是否在一个对象中。<br>有就返回 true ，没有返回 false 。<br><strong>语法：</strong></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in 的是左边字符串，右边是对象</span><br></pre></td></tr></table></figure>
-<ul>
-<li>delete<br><strong>解释：</strong><br>delete 关键字用来删除一个非 var 声明的全局变量。<br>或者删除对象里面的某一个属性。<br>或者删除数组里的某一项。<br>删除成功返回 true ， 失败返回 false 。</li>
-</ul>
-<ul>
-<li>void<br><strong>解释：</strong><br>void 关键字用来表示不访问数据，可以阻止 a 标签的默认跳转行为。<br>用在 a 标签中 ，href=“javascript:void(0)”。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;javascript:void(0)&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>throw<br><strong>解释：</strong><br>throw 关键字用于抛出异常。</p>
-</li>
-<li><p>catch<br><strong>解释：</strong><br>catch 关键字用于捕获异常。常与 try、finally 配合使用。</p>
-</li>
-<li><p>try<br><strong>解释：</strong><br>一般搭配 catch 使用</p>
-</li>
-<li><p>finally<br><strong>解释：</strong><br>一般搭配 catch 使用</p>
-</li>
-<li><p>with<br><strong>解释：</strong><br>更新当前作用域。</p>
-</li>
-</ul>
-<p>参考资料<br><a href="http://www.w3school.com.cn/js/pro_js_keywords.asp" target="_blank" rel="noopener">W3scool 之 ECMAScript 关键字</a></p>
+<h4 id="终于找到问题所在"><a href="#终于找到问题所在" class="headerlink" title="终于找到问题所在"></a>终于找到问题所在</h4><ol>
+<li>点开这个未被压缩输出的文件发现是有语法错误，而问题仅仅是在 js 文件中使用了 html 的注释语法，继而导致文件没有被 gulp-uglify 正常压缩和输出。错误如图：<br><img src="https://img-blog.csdnimg.cn/20200401132515123.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="注释的错误"></li>
+<li>修正注释语法的错误后，终于可以正常压缩输出 js 文件了。<br><img src="https://img-blog.csdnimg.cn/20200401132940809.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="right result"></li>
+</ol>
+<h3 id="错误原因分析"><a href="#错误原因分析" class="headerlink" title="错误原因分析"></a>错误原因分析</h3><p>项目前端代码由后端同事兼职编写，后端同事对于前端技术不够熟悉，以至于使用了错误的注释语法，最终导致 js 文件没有被正确压缩输出。并且后端同事多使用 webstorm IDE，而 webstorm 没有提示注释语法错误。相反 <strong>vs code</strong> 有提示注释语法错误。<br><img src="https://img-blog.csdnimg.cn/20200401133650657.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="webstorm"><br><img src="https://img-blog.csdnimg.cn/20200401133903786.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0ODc0Nw==,size_16,color_FFFFFF,t_70" alt="vs code"></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>有时候低级的错误反而难以查找，就像<strong>功夫再高也怕菜刀</strong>和<strong>乱拳打死老师傅</strong>。相信<strong>专业的人做专业的事情</strong>，避免低级错误。</p>
 
       
     </div>
@@ -344,7 +275,7 @@ var a = new Donate({
 
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript-ECMAScript/">JavaScript ECMAScript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BUG/">BUG</a></li></ul>
 
     </footer>
   </div>
@@ -352,19 +283,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2020/04/01/记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/02/记一次bug：微信小程序真机调试访问接口失败/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件
+          记一次bug：微信小程序真机调试访问接口失败
         
       </div>
     </a>
   
   
-    <a href="/2017/04/25/我的设计作品/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/04/23/ECMAScript 关键字整理/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">我的设计作品</div>
+      <div class="article-nav-title">ECMAScript 关键字整理（部分）</div>
     </a>
   
 </nav>
@@ -378,7 +309,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ECMAScript-关键字"><span class="nav-number">1.</span> <span class="nav-text">ECMAScript 关键字</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题详述"><span class="nav-number">2.</span> <span class="nav-text">问题详述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原因排查"><span class="nav-number">3.</span> <span class="nav-text">原因排查</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#排查过程"><span class="nav-number">3.1.</span> <span class="nav-text">排查过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终于找到问题所在"><span class="nav-number">3.2.</span> <span class="nav-text">终于找到问题所在</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误原因分析"><span class="nav-number">4.</span> <span class="nav-text">错误原因分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol>
     
     </div>
   </aside>

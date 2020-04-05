@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ecmascript 关键字整理（部分） | 皇甫文豪&#39;S BLOG</title>
+  <title>vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？ | 皇甫文豪&#39;S BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="JavaScript ECMAScript" />
+  <meta name="keywords" content="vue" />
   
   
   
   
-  <meta name="description" content="ECMAScript 关键字 function解释：function 关键字用于创建一个函数。语法：  123function()&amp;#123;&amp;#125;  this解释：this 关键字在 js 中是指当前行为执行的主体。  this 指向 普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。 构造函数中 this 指">
-<meta name="keywords" content="JavaScript ECMAScript">
+  <meta name="description" content="为什么写这篇笔记？记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。 computed 计算属性是什么？computed 计算属性介绍：computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要加 （">
+<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ECMAScript 关键字整理（部分）">
-<meta property="og:url" content="http://yoursite.com/2018/04/23/ECMAScript 关键字整理/index.html">
+<meta property="og:title" content="Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？">
+<meta property="og:url" content="http://yoursite.com/2020/04/04/Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？/index.html">
 <meta property="og:site_name" content="皇甫文豪&#39;S BLOG">
-<meta property="og:description" content="ECMAScript 关键字 function解释：function 关键字用于创建一个函数。语法：  123function()&amp;#123;&amp;#125;  this解释：this 关键字在 js 中是指当前行为执行的主体。  this 指向 普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。 构造函数中 this 指">
+<meta property="og:description" content="为什么写这篇笔记？记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。 computed 计算属性是什么？computed 计算属性介绍：computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要加 （">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-05T08:48:55.370Z">
+<meta property="og:updated_time" content="2020-04-05T09:44:42.442Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ECMAScript 关键字整理（部分）">
-<meta name="twitter:description" content="ECMAScript 关键字 function解释：function 关键字用于创建一个函数。语法：  123function()&amp;#123;&amp;#125;  this解释：this 关键字在 js 中是指当前行为执行的主体。  this 指向 普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。 构造函数中 this 指">
+<meta name="twitter:title" content="Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？">
+<meta name="twitter:description" content="为什么写这篇笔记？记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。 computed 计算属性是什么？computed 计算属性介绍：computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要加 （">
   
     <link rel="alternate" href="/atom.xml" title="皇甫文豪&#39;S BLOG" type="application/atom+xml">
   
@@ -162,7 +162,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-ECMAScript 关键字整理" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -170,7 +170,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      ECMAScript 关键字整理（部分）
+      Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？
     </h1>
   
 
@@ -178,8 +178,8 @@
     
     <div class="article-meta">
       
-	<a href="/2018/04/23/ECMAScript 关键字整理/" class="article-date">
-	  <time datetime="2018-04-23T12:31:00.000Z" itemprop="datePublished">2018-04-23</time>
+	<a href="/2020/04/04/Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？/" class="article-date">
+	  <time datetime="2020-04-03T16:00:00.000Z" itemprop="datePublished">2020-04-04</time>
 	</a>
 
       
@@ -195,110 +195,28 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ECMAScript-关键字"><a href="#ECMAScript-关键字" class="headerlink" title="ECMAScript 关键字"></a>ECMAScript 关键字</h2><ul>
-<li>function<br><strong>解释：</strong><br>function 关键字用于创建一个函数。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>this<br><strong>解释：</strong><br>this 关键字在 js 中是指当前行为执行的主体。</p>
-<ul>
-<li>this 指向<ol>
-<li>普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。</li>
-<li>构造函数中 this 指向构造函数实例化出来的对象，原型方法中的 this 也是指向实例化对象。</li>
-<li>方法调用中 this 指向调用该方法的对象。</li>
-<li>事件处理函数中的 this 指向触发事件的对象（事件源）。</li>
-<li>定时器中的 this 指向 window 。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>new<br><strong>解释：</strong><br>new 关键字用于搭配构造函数创建实例化对象。</p>
-<ul>
-<li>new 关键字执行过程<ol>
-<li>创建空对象。</li>
-<li>让 this 指向空对象。</li>
-<li>执行构造函数，给创建的新对象添加属性和方法。</li>
-<li>返回对象给函数的调用者。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>return<br><strong>解释：</strong><br>return 关键字用于函数中，使用 return 可以返回需要返回的值，return 后面可以是任意的 js 数据类型。<br>return 后面不写数据会返回 undefined 。<br>return 后面的代码不再执行，直接结束函数。<br>return 关键字作用范围是函数内。<br><strong>语法：</strong></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line">  return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="为什么写这篇笔记？"><a href="#为什么写这篇笔记？" class="headerlink" title="为什么写这篇笔记？"></a>为什么写这篇笔记？</h3><p>记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。</p>
+<h3 id="computed-计算属性是什么？"><a href="#computed-计算属性是什么？" class="headerlink" title="computed 计算属性是什么？"></a>computed 计算属性是什么？</h3><h4 id="computed-计算属性介绍："><a href="#computed-计算属性介绍：" class="headerlink" title="computed 计算属性介绍："></a>computed 计算属性介绍：</h4><p>computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要加 （），这是因为计算属性看起来是指向了方法（function），其实指向的是方法 return 的结果。<br>computed 计算属性的特性是计算结果会被缓存，如果 function 中依赖的响应式属性发生变化，computed 便会重新计算。注意如果依赖实例之外的属性（比如非响应式属性）则计算结果不会更新。<br>此外，如果在计算属性中使用了箭头函数，则 this 不会指向组件的实例，但在函数中依然可以将实例以函数的第一个参数访问。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">	aDouble: vm =&gt; vm.a * 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<ul>
-<li>for<br><strong>解释：</strong><br>for 关键字用于创建一个 for 循环。<br><strong>语法：</strong></li>
+<p>此外，计算属性默认只有 getter ，但也可以使用 setter 。<br>具体操作示例请看 <a href="https://cn.vuejs.org/v2/guide/computed.html#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84-setter" target="_blank" rel="noopener">计算属性的 getter 和 setter</a></p>
+<p>计算属性使用示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">	newList: function() &#123;</span><br><span class="line">    	return this.brandList.filter(item =&gt; item.name.indexOf(this.keywords) !== -1);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="什么时候使用计算属性？"><a href="#什么时候使用计算属性？" class="headerlink" title="什么时候使用计算属性？"></a>什么时候使用计算属性？</h4><p>模板内表达式多用于简单计算，这样便于阅读代码时的理解。如果在模板表达式里使用复杂的运算，一是难以理解，二是不能复用。你可能会说，那我在 methods 中定义一个方法， return 处理结果也可以啊。是的，可以。但不同之处在于，计算属性会缓存计算结果，只在依赖的响应式属性发生变化时，才会更新数据。这是计算属性的性能优势。<br>更多详情可访问</p>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/api/#computed" target="_blank" rel="noopener">Vue 之 computed 属性</a></p>
+</blockquote>
+<h3 id="watch-侦听器是什么？"><a href="#watch-侦听器是什么？" class="headerlink" title="watch 侦听器是什么？"></a>watch 侦听器是什么？</h3><h4 id="watch-侦听器介绍"><a href="#watch-侦听器介绍" class="headerlink" title="watch 侦听器介绍"></a>watch 侦听器介绍</h4><p>watch 属性是一个对象，键（key)可以是 Vue 实例的表达式（字面量）和字符串（data 中定义的数据），值是回调函数，也可以是方法名、包含了方法的对象和方法集合的数组。<br>回调函数的参数包含了新值和旧值。同时，如果需要对对象的值做进一步侦听，需要将键（key）对应的值设为对象，在对象的身上定义回调函数，再设置 deep 属性为 true。同时如果设置 <code>immediate: true</code>，则回调会在侦听开始之前调用。<br>需要注意的是 watcher 函数不能是箭头函数，官网的解释是箭头函数绑定了父级作用域上下文，会使 this 不能按照期望指向 Vue 实例。</p>
+<h4 id="什么时候使用侦听器？"><a href="#什么时候使用侦听器？" class="headerlink" title="什么时候使用侦听器？"></a>什么时候使用侦听器？</h4><p>当需要在数据变化时做异步或者开销比较大的操作时，watch 比较有用。</p>
+<p>详细介绍可以访问 Vue 官网查看 watch 属性介绍。</p>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/api/#watch" target="_blank" rel="noopener">Vue 之 watch 属性</a></p>
+</blockquote>
+<h3 id="总结：computed-计算属性和-watch-侦听器的区别"><a href="#总结：computed-计算属性和-watch-侦听器的区别" class="headerlink" title="总结：computed 计算属性和 watch 侦听器的区别"></a>总结：computed 计算属性和 watch 侦听器的区别</h3><h4 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h4><p>都是在数据发生变化需要进行处理的时候使用。</p>
+<h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h4><ul>
+<li>使用方式上<br>计算属性是依据响应式属性得出的计算属性，使用时需要调用，且不加（），会缓存数据，在响应式属性更新时，计算属性也更新。<br>侦听器不需要调用，会在侦听属性发生变化时，自动调用。<br>注意，计算属性必须 return 一个结果，也就是处理后的计算属性的值。而侦听器则不需要。</li>
+<li>使用场景上<br>计算属性多用于依据一个或多个响应式属性得到另一个计算属性。比如：姓+名=全名。比如购物车结算金额时。<br>侦听器多用于复杂场景或需要异步操作时，比如搜索时实时出现搜索建议或提示。搜索场景代码示例可访问<br><a href="https://cn.vuejs.org/v2/guide/computed.html#%E4%BE%A6%E5%90%AC%E5%99%A8" target="_blank" rel="noopener">Vue 之 侦听器</a><br>。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>if<br><strong>解释：</strong><br>if 关键字和 else 一起用于创建一个 if else 分支语句。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if()&#123;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>else<br><strong>解释：</strong><br>一般搭配 if 使用</p>
-</li>
-<li><p>while<br><strong>解释：</strong><br>while 关键字用于创建一个 while 循环。<br><strong>语法：</strong></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>do<br><strong>解释：</strong><br>do 关键字 和 while 一起用于创建一个 do while 循环。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">do&#123;</span><br><span class="line"></span><br><span class="line">  &#125;while()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>switch<br><strong>解释：</strong><br>switch 关键字用于创建一个 switch 分支语句。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">switch (key) &#123;</span><br><span class="line">  case value:</span><br><span class="line">    break;</span><br><span class="line">  default:</span><br><span class="line">    break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>case<br><strong>解释：</strong><br>一般搭配 switch 使用</p>
-</li>
-<li><p>default<br><strong>解释：</strong><br>一般搭配 switch 使用</p>
-</li>
-<li><p>break<br><strong>解释：</strong><br>break 关键字在循环中是结束整个循环，继续执行循环后的代码。<br>在 switch 中是阻止代码向下执行，跳出 switch 语句。<br>break 关键字的作用范围是循环和 switch 语句内。<br><strong>语法：</strong></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for() &#123;</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>continue<br><strong>解释：</strong><br>continue 关键字用于结束当前的这一次循环，continue 之后的代码不再执行，继续下一次循环。<br>其作用范围循环内。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for()&#123;</span><br><span class="line">  continue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>var<br><strong>解释：</strong><br>var 关键字用于声明一个变量。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello world&apos;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>typeof<br><strong>解释：</strong><br>typeof 关键字用于获取变量的类型。<br>会返回具体的数据类型，这个返回值是字符串类型的。<br>注意：typeof 只能区分出基本数据类型和函数，不能区分出对象和数组。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof 变量</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>instanceof<br><strong>解释：</strong><br>instanceof 关键字用于判断 Object.prototype 是否出现在某个对象的原型链上。<br>简单来说就是用于检测某一个实例对象是否属于某一个构造函数，返回布尔值。</p>
-</li>
-<li><p>in<br><strong>解释：</strong><br>in 关键字用于判断一个属性是否在一个对象中。<br>有就返回 true ，没有返回 false 。<br><strong>语法：</strong></p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in 的是左边字符串，右边是对象</span><br></pre></td></tr></table></figure>
-<ul>
-<li>delete<br><strong>解释：</strong><br>delete 关键字用来删除一个非 var 声明的全局变量。<br>或者删除对象里面的某一个属性。<br>或者删除数组里的某一项。<br>删除成功返回 true ， 失败返回 false 。</li>
-</ul>
-<ul>
-<li>void<br><strong>解释：</strong><br>void 关键字用来表示不访问数据，可以阻止 a 标签的默认跳转行为。<br>用在 a 标签中 ，href=“javascript:void(0)”。<br><strong>语法：</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;javascript:void(0)&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>throw<br><strong>解释：</strong><br>throw 关键字用于抛出异常。</p>
-</li>
-<li><p>catch<br><strong>解释：</strong><br>catch 关键字用于捕获异常。常与 try、finally 配合使用。</p>
-</li>
-<li><p>try<br><strong>解释：</strong><br>一般搭配 catch 使用</p>
-</li>
-<li><p>finally<br><strong>解释：</strong><br>一般搭配 catch 使用</p>
-</li>
-<li><p>with<br><strong>解释：</strong><br>更新当前作用域。</p>
-</li>
-</ul>
-<p>参考资料<br><a href="http://www.w3school.com.cn/js/pro_js_keywords.asp" target="_blank" rel="noopener">W3scool 之 ECMAScript 关键字</a></p>
 
       
     </div>
@@ -344,7 +262,7 @@ var a = new Donate({
 
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript-ECMAScript/">JavaScript ECMAScript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
 
     </footer>
   </div>
@@ -352,19 +270,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2020/04/01/记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/05/Vue.js 之“变异”和“替换”的概念/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件
+          Vue.js 之“变异”和“替换”的概念
         
       </div>
     </a>
   
   
-    <a href="/2017/04/25/我的设计作品/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/03/flex 布局之 flex 1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">我的设计作品</div>
+      <div class="article-nav-title">flex 布局之 &#34;flex: 1;&#34;</div>
     </a>
   
 </nav>
@@ -378,7 +296,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ECMAScript-关键字"><span class="nav-number">1.</span> <span class="nav-text">ECMAScript 关键字</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么写这篇笔记？"><span class="nav-number">1.</span> <span class="nav-text">为什么写这篇笔记？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computed-计算属性是什么？"><span class="nav-number">2.</span> <span class="nav-text">computed 计算属性是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#computed-计算属性介绍："><span class="nav-number">2.1.</span> <span class="nav-text">computed 计算属性介绍：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用计算属性？"><span class="nav-number">2.2.</span> <span class="nav-text">什么时候使用计算属性？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch-侦听器是什么？"><span class="nav-number">3.</span> <span class="nav-text">watch 侦听器是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#watch-侦听器介绍"><span class="nav-number">3.1.</span> <span class="nav-text">watch 侦听器介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用侦听器？"><span class="nav-number">3.2.</span> <span class="nav-text">什么时候使用侦听器？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结：computed-计算属性和-watch-侦听器的区别"><span class="nav-number">4.</span> <span class="nav-text">总结：computed 计算属性和 watch 侦听器的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相同点"><span class="nav-number">4.1.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点"><span class="nav-number">4.2.</span> <span class="nav-text">不同点</span></a></li></ol></li></ol>
     
     </div>
   </aside>
