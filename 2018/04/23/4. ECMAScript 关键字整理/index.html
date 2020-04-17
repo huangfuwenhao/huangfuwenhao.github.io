@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.7.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="ECMAScript 关键字 function解释：function 关键字用于创建一个函数。语法：  123function()&amp;#123;&amp;#125;  this解释：this 关键字在 js 中是指当前行为执行的主体。  this 指向 普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。 构造函数中 this 指">
+<meta name="keywords" content="JavaScript ECMAScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript 关键字整理（部分）">
+<meta property="og:url" content="http://yoursite.com/2018/04/23/4. ECMAScript 关键字整理/index.html">
+<meta property="og:site_name" content="皇甫文豪&#39;S BLOG">
+<meta property="og:description" content="ECMAScript 关键字 function解释：function 关键字用于创建一个函数。语法：  123function()&amp;#123;&amp;#125;  this解释：this 关键字在 js 中是指当前行为执行的主体。  this 指向 普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。 构造函数中 this 指">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-17T16:51:04.550Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECMAScript 关键字整理（部分）">
+<meta name="twitter:description" content="ECMAScript 关键字 function解释：function 关键字用于创建一个函数。语法：  123function()&amp;#123;&amp;#125;  this解释：this 关键字在 js 中是指当前行为执行的主体。  this 指向 普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。 构造函数中 this 指">
+
+<link rel="canonical" href="http://yoursite.com/2018/04/23/4. ECMAScript 关键字整理/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ECMAScript 关键字整理（部分） | 皇甫文豪'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">皇甫文豪'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">江上之清风，山间之明月</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/4. ECMAScript 关键字整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YACHU">
+      <meta itemprop="description" content="书犹药也，善读之可以医愚。— — (汉)刘向">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="皇甫文豪'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ECMAScript 关键字整理（部分）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-04-23 20:31:00" itemprop="dateCreated datePublished" datetime="2018-04-23T20:31:00+08:00">2018-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-18 00:51:04" itemprop="dateModified" datetime="2020-04-18T00:51:04+08:00">2020-04-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="ECMAScript-关键字"><a href="#ECMAScript-关键字" class="headerlink" title="ECMAScript 关键字"></a>ECMAScript 关键字</h2><ul>
+<li>function<br><strong>解释：</strong><br>function 关键字用于创建一个函数。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>this<br><strong>解释：</strong><br>this 关键字在 js 中是指当前行为执行的主体。</p>
+<ul>
+<li>this 指向<ol>
+<li>普通函数调用，this 指向 window 。注意：严格模式（’use strict’）下，this 指向 undefined 。</li>
+<li>构造函数中 this 指向构造函数实例化出来的对象，原型方法中的 this 也是指向实例化对象。</li>
+<li>方法调用中 this 指向调用该方法的对象。</li>
+<li>事件处理函数中的 this 指向触发事件的对象（事件源）。</li>
+<li>定时器中的 this 指向 window 。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>new<br><strong>解释：</strong><br>new 关键字用于搭配构造函数创建实例化对象。</p>
+<ul>
+<li>new 关键字执行过程<ol>
+<li>创建空对象。</li>
+<li>让 this 指向空对象。</li>
+<li>执行构造函数，给创建的新对象添加属性和方法。</li>
+<li>返回对象给函数的调用者。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>return<br><strong>解释：</strong><br>return 关键字用于函数中，使用 return 可以返回需要返回的值，return 后面可以是任意的 js 数据类型。<br>return 后面不写数据会返回 undefined 。<br>return 后面的代码不再执行，直接结束函数。<br>return 关键字作用范围是函数内。<br><strong>语法：</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line">  return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>for<br><strong>解释：</strong><br>for 关键字用于创建一个 for 循环。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>if<br><strong>解释：</strong><br>if 关键字和 else 一起用于创建一个 if else 分支语句。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if()&#123;</span><br><span class="line"></span><br><span class="line">&#125;else&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>else<br><strong>解释：</strong><br>一般搭配 if 使用</p>
+</li>
+<li><p>while<br><strong>解释：</strong><br>while 关键字用于创建一个 while 循环。<br><strong>语法：</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>do<br><strong>解释：</strong><br>do 关键字 和 while 一起用于创建一个 do while 循环。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">do&#123;</span><br><span class="line"></span><br><span class="line">  &#125;while()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>switch<br><strong>解释：</strong><br>switch 关键字用于创建一个 switch 分支语句。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">switch (key) &#123;</span><br><span class="line">  case value:</span><br><span class="line">    break;</span><br><span class="line">  default:</span><br><span class="line">    break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>case<br><strong>解释：</strong><br>一般搭配 switch 使用</p>
+</li>
+<li><p>default<br><strong>解释：</strong><br>一般搭配 switch 使用</p>
+</li>
+<li><p>break<br><strong>解释：</strong><br>break 关键字在循环中是结束整个循环，继续执行循环后的代码。<br>在 switch 中是阻止代码向下执行，跳出 switch 语句。<br>break 关键字的作用范围是循环和 switch 语句内。<br><strong>语法：</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for() &#123;</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>continue<br><strong>解释：</strong><br>continue 关键字用于结束当前的这一次循环，continue 之后的代码不再执行，继续下一次循环。<br>其作用范围循环内。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for()&#123;</span><br><span class="line">  continue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>var<br><strong>解释：</strong><br>var 关键字用于声明一个变量。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;hello world&apos;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>typeof<br><strong>解释：</strong><br>typeof 关键字用于获取变量的类型。<br>会返回具体的数据类型，这个返回值是字符串类型的。<br>注意：typeof 只能区分出基本数据类型和函数，不能区分出对象和数组。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof 变量</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>instanceof<br><strong>解释：</strong><br>instanceof 关键字用于判断 Object.prototype 是否出现在某个对象的原型链上。<br>简单来说就是用于检测某一个实例对象是否属于某一个构造函数，返回布尔值。</p>
+</li>
+<li><p>in<br><strong>解释：</strong><br>in 关键字用于判断一个属性是否在一个对象中。<br>有就返回 true ，没有返回 false 。<br><strong>语法：</strong></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in 的是左边字符串，右边是对象</span><br></pre></td></tr></table></figure>
+<ul>
+<li>delete<br><strong>解释：</strong><br>delete 关键字用来删除一个非 var 声明的全局变量。<br>或者删除对象里面的某一个属性。<br>或者删除数组里的某一项。<br>删除成功返回 true ， 失败返回 false 。</li>
+</ul>
+<ul>
+<li>void<br><strong>解释：</strong><br>void 关键字用来表示不访问数据，可以阻止 a 标签的默认跳转行为。<br>用在 a 标签中 ，href=“javascript:void(0)”。<br><strong>语法：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;javascript:void(0)&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>throw<br><strong>解释：</strong><br>throw 关键字用于抛出异常。</p>
+</li>
+<li><p>catch<br><strong>解释：</strong><br>catch 关键字用于捕获异常。常与 try、finally 配合使用。</p>
+</li>
+<li><p>try<br><strong>解释：</strong><br>一般搭配 catch 使用</p>
+</li>
+<li><p>finally<br><strong>解释：</strong><br>一般搭配 catch 使用</p>
+</li>
+<li><p>with<br><strong>解释：</strong><br>更新当前作用域。</p>
+</li>
+</ul>
+<p>参考资料<br><a href="http://www.w3school.com.cn/js/pro_js_keywords.asp" target="_blank" rel="noopener">W3scool 之 ECMAScript 关键字</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript-ECMAScript/" rel="tag"># JavaScript ECMAScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/04/25/3. 我的设计作品/" rel="prev" title="我的设计作品">
+      <i class="fa fa-chevron-left"></i> 我的设计作品
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/11/22/5. Vue 和 React 的异同/" rel="next" title="Vue 和 React 的异同">
+      Vue 和 React 的异同 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ECMAScript-关键字"><span class="nav-number">1.</span> <span class="nav-text">ECMAScript 关键字</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YACHU</p>
+  <div class="site-description" itemprop="description">书犹药也，善读之可以医愚。— — (汉)刘向</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YACHU</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

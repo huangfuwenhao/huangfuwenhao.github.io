@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.7.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="为什么写这篇笔记？记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。 computed 计算属性是什么？computed 计算属性介绍：computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要加 （">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？">
+<meta property="og:url" content="http://yoursite.com/2020/04/04/9. Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？/index.html">
+<meta property="og:site_name" content="皇甫文豪&#39;S BLOG">
+<meta property="og:description" content="为什么写这篇笔记？记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。 computed 计算属性是什么？computed 计算属性介绍：computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要加 （">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-17T16:52:32.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？">
+<meta name="twitter:description" content="为什么写这篇笔记？记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。 computed 计算属性是什么？computed 计算属性介绍：computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要加 （">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/04/9. Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？ | 皇甫文豪'S BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">皇甫文豪'S BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">江上之清风，山间之明月</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/04/9. Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YACHU">
+      <meta itemprop="description" content="书犹药也，善读之可以医愚。— — (汉)刘向">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="皇甫文豪'S BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue.js 的 computed 计算属性和 watch 侦听器的区别在哪里？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-04 00:00:00" itemprop="dateCreated datePublished" datetime="2020-04-04T00:00:00+08:00">2020-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-18 00:52:32" itemprop="dateModified" datetime="2020-04-18T00:52:32+08:00">2020-04-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="为什么写这篇笔记？"><a href="#为什么写这篇笔记？" class="headerlink" title="为什么写这篇笔记？"></a>为什么写这篇笔记？</h3><p>记得在以往的面试中多次被问到这个问题，回答的都不理想，仔细想想也是理解的不到位。今天借着休息的时间准备查阅文档，写写示例代码去仔细理解下。</p>
+<h3 id="computed-计算属性是什么？"><a href="#computed-计算属性是什么？" class="headerlink" title="computed 计算属性是什么？"></a>computed 计算属性是什么？</h3><h4 id="computed-计算属性介绍："><a href="#computed-计算属性介绍：" class="headerlink" title="computed 计算属性介绍："></a>computed 计算属性介绍：</h4><p>computed 计算属性是一个对象。它的使用方法是在 computed 属性中定义一个方法，和给对象定义方法一样，方法名可以直接在页面（template）中使用，不需要加 （），这是因为计算属性看起来是指向了方法（function），其实指向的是方法 return 的结果。<br>computed 计算属性的特性是计算结果会被缓存，如果 function 中依赖的响应式属性发生变化，computed 便会重新计算。注意如果依赖实例之外的属性（比如非响应式属性）则计算结果不会更新。<br>此外，如果在计算属性中使用了箭头函数，则 this 不会指向组件的实例，但在函数中依然可以将实例以函数的第一个参数访问。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">	aDouble: vm =&gt; vm.a * 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>此外，计算属性默认只有 getter ，但也可以使用 setter 。<br>具体操作示例请看 <a href="https://cn.vuejs.org/v2/guide/computed.html#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E7%9A%84-setter" target="_blank" rel="noopener">计算属性的 getter 和 setter</a></p>
+<p>计算属性使用示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">	newList: function() &#123;</span><br><span class="line">    	return this.brandList.filter(item =&gt; item.name.indexOf(this.keywords) !== -1);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="什么时候使用计算属性？"><a href="#什么时候使用计算属性？" class="headerlink" title="什么时候使用计算属性？"></a>什么时候使用计算属性？</h4><p>模板内表达式多用于简单计算，这样便于阅读代码时的理解。如果在模板表达式里使用复杂的运算，一是难以理解，二是不能复用。你可能会说，那我在 methods 中定义一个方法， return 处理结果也可以啊。是的，可以。但不同之处在于，计算属性会缓存计算结果，只在依赖的响应式属性发生变化时，才会更新数据。这是计算属性的性能优势。<br>更多详情可访问</p>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/api/#computed" target="_blank" rel="noopener">Vue 之 computed 属性</a></p>
+</blockquote>
+<h3 id="watch-侦听器是什么？"><a href="#watch-侦听器是什么？" class="headerlink" title="watch 侦听器是什么？"></a>watch 侦听器是什么？</h3><h4 id="watch-侦听器介绍"><a href="#watch-侦听器介绍" class="headerlink" title="watch 侦听器介绍"></a>watch 侦听器介绍</h4><p>watch 属性是一个对象，键（key)可以是 Vue 实例的表达式（字面量）和字符串（data 中定义的数据），值是回调函数，也可以是方法名、包含了方法的对象和方法集合的数组。<br>回调函数的参数包含了新值和旧值。同时，如果需要对对象的值做进一步侦听，需要将键（key）对应的值设为对象，在对象的身上定义回调函数，再设置 deep 属性为 true。同时如果设置 <code>immediate: true</code>，则回调会在侦听开始之前调用。<br>需要注意的是 watcher 函数不能是箭头函数，官网的解释是箭头函数绑定了父级作用域上下文，会使 this 不能按照期望指向 Vue 实例。</p>
+<h4 id="什么时候使用侦听器？"><a href="#什么时候使用侦听器？" class="headerlink" title="什么时候使用侦听器？"></a>什么时候使用侦听器？</h4><p>当需要在数据变化时做异步或者开销比较大的操作时，watch 比较有用。</p>
+<p>详细介绍可以访问 Vue 官网查看 watch 属性介绍。</p>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/api/#watch" target="_blank" rel="noopener">Vue 之 watch 属性</a></p>
+</blockquote>
+<h3 id="总结：computed-计算属性和-watch-侦听器的区别"><a href="#总结：computed-计算属性和-watch-侦听器的区别" class="headerlink" title="总结：computed 计算属性和 watch 侦听器的区别"></a>总结：computed 计算属性和 watch 侦听器的区别</h3><h4 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h4><p>都是在数据发生变化需要进行处理的时候使用。</p>
+<h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h4><ul>
+<li>使用方式上<br>计算属性是依据响应式属性得出的计算属性，使用时需要调用，且不加（），会缓存数据，在响应式属性更新时，计算属性也更新。<br>侦听器不需要调用，会在侦听属性发生变化时，自动调用。<br>注意，计算属性必须 return 一个结果，也就是处理后的计算属性的值。而侦听器则不需要。</li>
+<li>使用场景上<br>计算属性多用于依据一个或多个响应式属性得到另一个计算属性。比如：姓+名=全名。比如购物车结算金额时。<br>侦听器多用于复杂场景或需要异步操作时，比如搜索时实时出现搜索建议或提示。搜索场景代码示例可访问<br><a href="https://cn.vuejs.org/v2/guide/computed.html#%E4%BE%A6%E5%90%AC%E5%99%A8" target="_blank" rel="noopener">Vue 之 侦听器</a><br>。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># vue</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/03/8. flex 布局之 flex 1/" rel="prev" title="flex 布局之 "flex: 1;"">
+      <i class="fa fa-chevron-left"></i> flex 布局之 "flex: 1;"
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/05/10. Vue.js 之“变异”和“替换”的概念/" rel="next" title="Vue.js 之“变异”和“替换”的概念">
+      Vue.js 之“变异”和“替换”的概念 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么写这篇笔记？"><span class="nav-number">1.</span> <span class="nav-text">为什么写这篇笔记？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computed-计算属性是什么？"><span class="nav-number">2.</span> <span class="nav-text">computed 计算属性是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#computed-计算属性介绍："><span class="nav-number">2.1.</span> <span class="nav-text">computed 计算属性介绍：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用计算属性？"><span class="nav-number">2.2.</span> <span class="nav-text">什么时候使用计算属性？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch-侦听器是什么？"><span class="nav-number">3.</span> <span class="nav-text">watch 侦听器是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#watch-侦听器介绍"><span class="nav-number">3.1.</span> <span class="nav-text">watch 侦听器介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用侦听器？"><span class="nav-number">3.2.</span> <span class="nav-text">什么时候使用侦听器？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结：computed-计算属性和-watch-侦听器的区别"><span class="nav-number">4.</span> <span class="nav-text">总结：computed 计算属性和 watch 侦听器的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相同点"><span class="nav-number">4.1.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点"><span class="nav-number">4.2.</span> <span class="nav-text">不同点</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YACHU</p>
+  <div class="site-description" itemprop="description">书犹药也，善读之可以医愚。— — (汉)刘向</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YACHU</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
