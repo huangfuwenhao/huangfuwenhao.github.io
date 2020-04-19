@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,19 +21,19 @@
   </script>
 
   <meta name="description" content="前情提要这几天在使用 vue-cli 创建 vue 项目时，竟然忘记 runtime-only 运行时和 runtime + compiler 完整版的区别了，查过官网文档后，记下这篇笔记。 注：以下内容摘自官网。 runtime-only术语完整版：同时包含编译器和运行时的版本。 编译器：用来将模板字符串编译成为 JavaScript 渲染函数的代码。 运行时：用来创建 Vue 实例、渲染并处理">
-<meta name="keywords" content="vue-cli">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 vue-cli 创建项目时，vue 的 &#39;runtime-only&#39; 是什么意思？">
-<meta property="og:url" content="http://yoursite.com/2020/04/06/14. 使用 vue-cli 创建项目时，vue 的 'runtime-only' 是什么意思？/index.html">
-<meta property="og:site_name" content="皇甫文豪&#39;S BLOG">
+<meta property="og:title" content="使用 Vue-cli 创建项目时，Vue 的 &#39;runtime-only&#39; 是什么意思？">
+<meta property="og:url" content="http://yoursite.com/2020/04/06/14.%20%E4%BD%BF%E7%94%A8%20Vue-cli%20%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%97%B6%EF%BC%8CVue%20%E7%9A%84%20'runtime-only'%20%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F/index.html">
+<meta property="og:site_name" content="江上之清风，山间之明月">
 <meta property="og:description" content="前情提要这几天在使用 vue-cli 创建 vue 项目时，竟然忘记 runtime-only 运行时和 runtime + compiler 完整版的区别了，查过官网文档后，记下这篇笔记。 注：以下内容摘自官网。 runtime-only术语完整版：同时包含编译器和运行时的版本。 编译器：用来将模板字符串编译成为 JavaScript 渲染函数的代码。 运行时：用来创建 Vue 实例、渲染并处理">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-17T16:55:17.926Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-05T17:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-19T13:15:36.376Z">
+<meta property="article:author" content="皇甫文豪">
+<meta property="article:tag" content="Vue-cli">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 vue-cli 创建项目时，vue 的 &#39;runtime-only&#39; 是什么意思？">
-<meta name="twitter:description" content="前情提要这几天在使用 vue-cli 创建 vue 项目时，竟然忘记 runtime-only 运行时和 runtime + compiler 完整版的区别了，查过官网文档后，记下这篇笔记。 注：以下内容摘自官网。 runtime-only术语完整版：同时包含编译器和运行时的版本。 编译器：用来将模板字符串编译成为 JavaScript 渲染函数的代码。 运行时：用来创建 Vue 实例、渲染并处理">
 
-<link rel="canonical" href="http://yoursite.com/2020/04/06/14. 使用 vue-cli 创建项目时，vue 的 'runtime-only' 是什么意思？/">
+<link rel="canonical" href="http://yoursite.com/2020/04/06/14.%20%E4%BD%BF%E7%94%A8%20Vue-cli%20%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%97%B6%EF%BC%8CVue%20%E7%9A%84%20'runtime-only'%20%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>使用 vue-cli 创建项目时，vue 的 'runtime-only' 是什么意思？ | 皇甫文豪'S BLOG</title>
+  <title>使用 Vue-cli 创建项目时，Vue 的 'runtime-only' 是什么意思？ | 江上之清风，山间之明月</title>
   
 
 
@@ -97,10 +97,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">皇甫文豪'S BLOG</h1>
+      <h1 class="site-title">江上之清风，山间之明月</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">江上之清风，山间之明月</p>
+      <p class="site-subtitle" itemprop="description">皇甫文豪's blog</p>
   </div>
 
   <div class="site-nav-right">
@@ -152,20 +152,20 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/14. 使用 vue-cli 创建项目时，vue 的 'runtime-only' 是什么意思？/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/14.%20%E4%BD%BF%E7%94%A8%20Vue-cli%20%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%97%B6%EF%BC%8CVue%20%E7%9A%84%20'runtime-only'%20%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YACHU">
-      <meta itemprop="description" content="书犹药也，善读之可以医愚。— — (汉)刘向">
+      <meta itemprop="name" content="皇甫文豪">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="皇甫文豪'S BLOG">
+      <meta itemprop="name" content="江上之清风，山间之明月">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用 vue-cli 创建项目时，vue 的 'runtime-only' 是什么意思？
+          使用 Vue-cli 创建项目时，Vue 的 'runtime-only' 是什么意思？
         </h1>
 
         <div class="post-meta">
@@ -182,7 +182,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-18 00:55:17" itemprop="dateModified" datetime="2020-04-18T00:55:17+08:00">2020-04-18</time>
+                <time title="修改时间：2020-04-19 21:15:36" itemprop="dateModified" datetime="2020-04-19T21:15:36+08:00">2020-04-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -190,7 +190,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
                 </span>
             </span>
 
@@ -210,9 +210,12 @@
 <h3 id="runtime-only"><a href="#runtime-only" class="headerlink" title="runtime-only"></a>runtime-only</h3><h4 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h4><p>完整版：同时包含编译器和运行时的版本。</p>
 <p>编译器：用来将模板字符串编译成为 JavaScript 渲染函数的代码。</p>
 <p>运行时：用来创建 Vue 实例、渲染并处理虚拟 DOM 等的代码。基本上就是除去编译器的其它一切。</p>
-<p>对于 Vue 不同构建版本的区别，可访问 Vue 官网查看 <a href="https://cn.vuejs.org/v2/guide/installation.html#%E5%AF%B9%E4%B8%8D%E5%90%8C%E6%9E%84%E5%BB%BA%E7%89%88%E6%9C%AC%E7%9A%84%E8%A7%A3%E9%87%8A" target="_blank" rel="noopener">Vue 对不同构建版本的解释</a><br><a id="more"></a></p>
+<p>对于 Vue 不同构建版本的区别，可访问 Vue 官网查看 <a href="https://cn.vuejs.org/v2/guide/installation.html#%E5%AF%B9%E4%B8%8D%E5%90%8C%E6%9E%84%E5%BB%BA%E7%89%88%E6%9C%AC%E7%9A%84%E8%A7%A3%E9%87%8A" target="_blank" rel="noopener">Vue 对不同构建版本的解释</a></p>
+<a id="more"></a>
+
 <h4 id="运行时-编译器-vs-只包含运行时"><a href="#运行时-编译器-vs-只包含运行时" class="headerlink" title="运行时 + 编译器 vs. 只包含运行时"></a>运行时 + 编译器 vs. 只包含运行时</h4><p>如果你需要在客户端编译模板 (比如传入一个字符串给 template 选项，或挂载到一个元素上并以其 DOM 内部的 HTML 作为模板)，就将需要加上编译器，即完整版：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 需要编译器</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  template: &apos;&lt;div&gt;&#123;&#123; hi &#125;&#125;&lt;/div&gt;&apos;</span><br><span class="line">&#125;)</span><br><span class="line">// 不需要编译器</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  render (h) &#123;</span><br><span class="line">    return h(&apos;div&apos;, this.hi)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 需要编译器</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  template: &#39;&lt;div&gt;&#123;&#123; hi &#125;&#125;&lt;&#x2F;div&gt;&#39;</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 不需要编译器</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  render (h) &#123;</span><br><span class="line">    return h(&#39;div&#39;, this.hi)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>当使用 vue-loader 或 vueify 的时候，*.vue 文件内部的模板会在构建时预编译成 JavaScript。你在最终打好的包里实际上是不需要编译器的，所以只用运行时版本即可。</p>
 
     </div>
@@ -223,7 +226,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/vue-cli/" rel="tag"># vue-cli</a>
+              <a href="/tags/Vue-cli/" rel="tag"># Vue-cli</a>
           </div>
 
         
@@ -232,11 +235,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/06/13. lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别/" rel="prev" title="lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别">
+    <a href="/2020/04/06/13.%20lodash%20%E7%9A%84%20_.debounce()%20%E5%92%8C%20_.throttle()%20%E4%BB%A5%E5%8F%8A%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别">
       <i class="fa fa-chevron-left"></i> lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/08/15.自己实现简单的函数防抖(debounce)和函数节流(throttle)/" rel="next" title="自己实现简单的函数防抖(debounce)和函数节流(throttle)">
+    <a href="/2020/04/08/15.%20%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96(debounce)%E5%92%8C%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81(throttle)/" rel="next" title="自己实现简单的函数防抖(debounce)和函数节流(throttle)">
       自己实现简单的函数防抖(debounce)和函数节流(throttle) <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -303,8 +306,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">YACHU</p>
-  <div class="site-description" itemprop="description">书犹药也，善读之可以医愚。— — (汉)刘向</div>
+  <p class="site-author-name" itemprop="name">皇甫文豪</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -316,14 +319,12 @@
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
         <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -353,9 +354,9 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">YACHU</span>
+  <span class="author" itemprop="copyrightHolder">皇甫文豪</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -375,9 +376,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

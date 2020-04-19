@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,13 +21,12 @@
   </script>
 
   <meta name="description" content="一、开发情况简述：后端未部署，目前开发阶段直接连同事电脑，前端由我负责。 二、问题描述最近在使用 uni-app 开发微信小程序时，遇到了真机调试接口访问失败的问题。一开始草草的翻了官方文档，没看出个所以然。昨天在网上搜了一下原因，记得有网友提到了防火墙的问题。今天上午我试着关闭本机的防火墙后，还是不行。">
-<meta name="keywords" content="BUG">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一次bug：微信小程序真机调试访问接口失败">
-<meta property="og:url" content="http://yoursite.com/2020/04/02/7. 记一次bug：微信小程序真机调试访问接口失败/index.html">
-<meta property="og:site_name" content="皇甫文豪&#39;S BLOG">
+<meta property="og:url" content="http://yoursite.com/2020/04/02/7.%20%E8%AE%B0%E4%B8%80%E6%AC%A1bug%EF%BC%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3%E5%A4%B1%E8%B4%A5/index.html">
+<meta property="og:site_name" content="江上之清风，山间之明月">
 <meta property="og:description" content="一、开发情况简述：后端未部署，目前开发阶段直接连同事电脑，前端由我负责。 二、问题描述最近在使用 uni-app 开发微信小程序时，遇到了真机调试接口访问失败的问题。一开始草草的翻了官方文档，没看出个所以然。昨天在网上搜了一下原因，记得有网友提到了防火墙的问题。今天上午我试着关闭本机的防火墙后，还是不行。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402152828136-1577363757.jpg">
 <meta property="og:image" content="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402143708567-474408977.jpg">
 <meta property="og:image" content="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402145649448-130430728.jpg">
@@ -36,13 +35,14 @@
 <meta property="og:image" content="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153338376-1887082728.jpg">
 <meta property="og:image" content="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153503815-1634787338.jpg">
 <meta property="og:image" content="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153349799-380244354.jpg">
-<meta property="og:updated_time" content="2020-04-17T16:54:02.987Z">
+<meta property="article:published_time" content="2020-04-02T07:53:00.000Z">
+<meta property="article:modified_time" content="2020-04-19T13:14:06.117Z">
+<meta property="article:author" content="皇甫文豪">
+<meta property="article:tag" content="微信小程序">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记一次bug：微信小程序真机调试访问接口失败">
-<meta name="twitter:description" content="一、开发情况简述：后端未部署，目前开发阶段直接连同事电脑，前端由我负责。 二、问题描述最近在使用 uni-app 开发微信小程序时，遇到了真机调试接口访问失败的问题。一开始草草的翻了官方文档，没看出个所以然。昨天在网上搜了一下原因，记得有网友提到了防火墙的问题。今天上午我试着关闭本机的防火墙后，还是不行。">
 <meta name="twitter:image" content="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402152828136-1577363757.jpg">
 
-<link rel="canonical" href="http://yoursite.com/2020/04/02/7. 记一次bug：微信小程序真机调试访问接口失败/">
+<link rel="canonical" href="http://yoursite.com/2020/04/02/7.%20%E8%AE%B0%E4%B8%80%E6%AC%A1bug%EF%BC%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3%E5%A4%B1%E8%B4%A5/">
 
 
 <script id="page-configurations">
@@ -55,7 +55,7 @@
   };
 </script>
 
-  <title>记一次bug：微信小程序真机调试访问接口失败 | 皇甫文豪'S BLOG</title>
+  <title>记一次bug：微信小程序真机调试访问接口失败 | 江上之清风，山间之明月</title>
   
 
 
@@ -106,10 +106,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">皇甫文豪'S BLOG</h1>
+      <h1 class="site-title">江上之清风，山间之明月</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">江上之清风，山间之明月</p>
+      <p class="site-subtitle" itemprop="description">皇甫文豪's blog</p>
   </div>
 
   <div class="site-nav-right">
@@ -161,16 +161,16 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/7. 记一次bug：微信小程序真机调试访问接口失败/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/02/7.%20%E8%AE%B0%E4%B8%80%E6%AC%A1bug%EF%BC%9A%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3%E5%A4%B1%E8%B4%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YACHU">
-      <meta itemprop="description" content="书犹药也，善读之可以医愚。— — (汉)刘向">
+      <meta itemprop="name" content="皇甫文豪">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="皇甫文豪'S BLOG">
+      <meta itemprop="name" content="江上之清风，山间之明月">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-18 00:54:02" itemprop="dateModified" datetime="2020-04-18T00:54:02+08:00">2020-04-18</time>
+                <time title="修改时间：2020-04-19 21:14:06" itemprop="dateModified" datetime="2020-04-19T21:14:06+08:00">2020-04-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -199,7 +199,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
                 </span>
             </span>
 
@@ -218,14 +218,15 @@
 <h3 id="二、问题描述"><a href="#二、问题描述" class="headerlink" title="二、问题描述"></a>二、问题描述</h3><p>最近在使用 uni-app 开发微信小程序时，遇到了真机调试接口访问失败的问题。一开始草草的翻了官方文档，没看出个所以然。昨天在网上搜了一下原因，记得有网友提到了防火墙的问题。今天上午我试着关闭本机的防火墙后，还是不行。</p>
 <p><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402152828136-1577363757.jpg" alt="关闭本机网络防火墙"></p>
 <a id="more"></a>
+
 <p>猛然间想到应该是要手机、电脑处于同一个网络下，我不记得昨天查的资料是否说了同一个网络的问题了，但想到去年秋天自己折腾 uni-app 开发安卓应用时，真机调试好像有要求手机和电脑处于同一个网络下。以前使用 appCan 开发应用时记得也是。然后使用 win10 系统自带的移动热点开启了一个无线网络给手机连接。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402143708567-474408977.jpg" alt="win10 移动热点"><br><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402145649448-130430728.jpg" width="500" alt="手机连接电脑提供的 mp-test 热点"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402143708567-474408977.jpg" alt="win10 移动热点"><br><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402145649448-130430728.jpg" width = "500" alt="手机连接电脑提供的 mp-test 热点"/></p>
 <p>再次打开微信开发者工具的真机调试后，手机上运行小程序真的可以正常访问接口了。</p>
 <p><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402152204090-467740419.jpg" alt="真机调试正确请求回了数据"></p>
 <h4 id="but…"><a href="#but…" class="headerlink" title="but…"></a>but…</h4><p>测试一<br>当我开启防火墙后，真机调试接口依然可以正常访问（访问正常的图就不贴了）。</p>
 <p><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153106678-1836673955.jpg" alt="开启防火墙"></p>
 <p>测试二<br>当我再次让手机和电脑处于同一个无线网下时，结果报错了。</p>
-<p><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153338376-1887082728.jpg" alt="电脑"><br><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153503815-1634787338.jpg" width="500" alt="手机"><br><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153349799-380244354.jpg" alt="微信开发者工具真机调试界面报错"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153338376-1887082728.jpg" alt="电脑"><br><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153503815-1634787338.jpg" width = "500" alt="手机"/><br><img src="https://img2020.cnblogs.com/blog/1412207/202004/1412207-20200402153349799-380244354.jpg" alt="微信开发者工具真机调试界面报错"></p>
 <h3 id="三、结语"><a href="#三、结语" class="headerlink" title="三、结语"></a>三、结语</h3><p>根据实际测试得出如下结果：</p>
 <ol>
 <li>需要关闭防火墙是真的，但是是由提供服务的后端同事关闭其电脑防火墙，之前遇到过这个问题，就是后端关闭防火墙解决的。前端其实无所谓。</li>
@@ -240,7 +241,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/BUG/" rel="tag"># BUG</a>
+              <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 微信小程序</a>
           </div>
 
         
@@ -249,11 +250,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/01/6. 记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件/" rel="prev" title="记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件">
+    <a href="/2020/04/01/6.%20%E8%AE%B0%E4%B8%80%E6%AC%A1%20bug%EF%BC%9Agulp-uglify%20%E5%9C%A8%E6%B2%A1%E6%9C%89%E6%8A%A5%E9%94%99%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E5%8D%B4%E6%B2%A1%E6%9C%89%E5%8E%8B%E7%BC%A9%E5%B9%B6%E8%BE%93%E5%87%BA%E9%83%A8%E5%88%86%E6%96%87%E4%BB%B6%E5%A4%B9%E9%87%8C%E7%9A%84%20js%20%E6%96%87%E4%BB%B6/" rel="prev" title="记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件">
       <i class="fa fa-chevron-left"></i> 记一次 bug：gulp-uglify 在没有报错的情况下却没有压缩并输出部分文件夹里的 js 文件
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/03/8. flex 布局之 flex 1/" rel="next" title="flex 布局之 "flex: 1;"">
+    <a href="/2020/04/03/8.%20flex%20%E5%B8%83%E5%B1%80%E4%B9%8B%20'flex%EF%BC%9A1'/" rel="next" title="flex 布局之 "flex: 1;"">
       flex 布局之 "flex: 1;" <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -320,8 +321,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">YACHU</p>
-  <div class="site-description" itemprop="description">书犹药也，善读之可以医愚。— — (汉)刘向</div>
+  <p class="site-author-name" itemprop="name">皇甫文豪</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -333,14 +334,12 @@
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
         <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -370,9 +369,9 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">YACHU</span>
+  <span class="author" itemprop="copyrightHolder">皇甫文豪</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -392,9 +391,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="_.debounce() 和 _.throttle()防抖：语法 _.debounce(func, [wait=0], [options={}])  创建一个防抖动函数。会从上一次调用结束后延迟 wait 毫秒后继续调用 func 方法，该函数提供一个 cancel 方法以供取消延迟函数的调用以及 flush 方法立即调用。 options 对象这个参数决定了怎么调用 func 函数。option">
-<meta name="keywords" content="lodash">
+  <meta name="description" content="_.debounce() 和 _.throttle()防抖：语法 _.debounce(func, [wait&#x3D;0], [options&#x3D;{}])  创建一个防抖动函数。会从上一次调用结束后延迟 wait 毫秒后继续调用 func 方法，该函数提供一个 cancel 方法以供取消延迟函数的调用以及 flush 方法立即调用。 options 对象这个参数决定了怎么调用 func 函数。option">
 <meta property="og:type" content="article">
 <meta property="og:title" content="lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别">
-<meta property="og:url" content="http://yoursite.com/2020/04/06/13. lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别/index.html">
-<meta property="og:site_name" content="皇甫文豪&#39;S BLOG">
-<meta property="og:description" content="_.debounce() 和 _.throttle()防抖：语法 _.debounce(func, [wait=0], [options={}])  创建一个防抖动函数。会从上一次调用结束后延迟 wait 毫秒后继续调用 func 方法，该函数提供一个 cancel 方法以供取消延迟函数的调用以及 flush 方法立即调用。 options 对象这个参数决定了怎么调用 func 函数。option">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-17T16:55:08.644Z">
+<meta property="og:url" content="http://yoursite.com/2020/04/06/13.%20lodash%20%E7%9A%84%20_.debounce()%20%E5%92%8C%20_.throttle()%20%E4%BB%A5%E5%8F%8A%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="江上之清风，山间之明月">
+<meta property="og:description" content="_.debounce() 和 _.throttle()防抖：语法 _.debounce(func, [wait&#x3D;0], [options&#x3D;{}])  创建一个防抖动函数。会从上一次调用结束后延迟 wait 毫秒后继续调用 func 方法，该函数提供一个 cancel 方法以供取消延迟函数的调用以及 flush 方法立即调用。 options 对象这个参数决定了怎么调用 func 函数。option">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-19T13:15:27.577Z">
+<meta property="article:author" content="皇甫文豪">
+<meta property="article:tag" content="Lodash">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别">
-<meta name="twitter:description" content="_.debounce() 和 _.throttle()防抖：语法 _.debounce(func, [wait=0], [options={}])  创建一个防抖动函数。会从上一次调用结束后延迟 wait 毫秒后继续调用 func 方法，该函数提供一个 cancel 方法以供取消延迟函数的调用以及 flush 方法立即调用。 options 对象这个参数决定了怎么调用 func 函数。option">
 
-<link rel="canonical" href="http://yoursite.com/2020/04/06/13. lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别/">
+<link rel="canonical" href="http://yoursite.com/2020/04/06/13.%20lodash%20%E7%9A%84%20_.debounce()%20%E5%92%8C%20_.throttle()%20%E4%BB%A5%E5%8F%8A%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别 | 皇甫文豪'S BLOG</title>
+  <title>lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别 | 江上之清风，山间之明月</title>
   
 
 
@@ -97,10 +97,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">皇甫文豪'S BLOG</h1>
+      <h1 class="site-title">江上之清风，山间之明月</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">江上之清风，山间之明月</p>
+      <p class="site-subtitle" itemprop="description">皇甫文豪's blog</p>
   </div>
 
   <div class="site-nav-right">
@@ -152,16 +152,16 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/13. lodash 的 _.debounce() 和 _.throttle() 以及函数防抖和函数节流的区别/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/13.%20lodash%20%E7%9A%84%20_.debounce()%20%E5%92%8C%20_.throttle()%20%E4%BB%A5%E5%8F%8A%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YACHU">
-      <meta itemprop="description" content="书犹药也，善读之可以医愚。— — (汉)刘向">
+      <meta itemprop="name" content="皇甫文豪">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="皇甫文豪'S BLOG">
+      <meta itemprop="name" content="江上之清风，山间之明月">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -182,7 +182,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-18 00:55:08" itemprop="dateModified" datetime="2020-04-18T00:55:08+08:00">2020-04-18</time>
+                <time title="修改时间：2020-04-19 21:15:27" itemprop="dateModified" datetime="2020-04-19T21:15:27+08:00">2020-04-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -190,7 +190,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
                 </span>
             </span>
 
@@ -209,7 +209,9 @@
 <p>_.debounce(func, [wait=0], [options={}])</p>
 </blockquote>
 <p>创建一个防抖动函数。会从上一次调用结束后延迟 wait 毫秒后继续调用 func 方法，<br>该函数提供一个 cancel 方法以供取消延迟函数的调用以及 flush 方法立即调用。</p>
-<p>options 对象这个参数决定了怎么调用 func 函数。<br>options.leading 与（或） options.trailing 决定延迟（wait）前，func 如何调用（也就是先调用再等待还是先等待再调用）。<br>func 会传入最后一次传递的参数给 debounce 这个函数。随后调用的 debounce 函数返回的是最后一次 func 调用的结果。<br><a id="more"></a></p>
+<p>options 对象这个参数决定了怎么调用 func 函数。<br>options.leading 与（或） options.trailing 决定延迟（wait）前，func 如何调用（也就是先调用再等待还是先等待再调用）。<br>func 会传入最后一次传递的参数给 debounce 这个函数。随后调用的 debounce 函数返回的是最后一次 func 调用的结果。</p>
+<a id="more"></a>
+
 <h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如果 leading 和 trailing 都为 true，则 func 允许的 trailing 调用条件为 wait 期间多次调用 debounce 防抖方法。<br>如果 wait 为 0 并且 leading 为 false, func 调用将被推迟到下一个点，类似 setTimeout 为 0 的超时。</p>
 <h5 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h5><ul>
 <li>func: 需要防抖的函数</li>
@@ -239,7 +241,8 @@
 </li>
 </ul>
 <h5 id="返回值：-1"><a href="#返回值：-1" class="headerlink" title="返回值："></a>返回值：</h5><p>返回节流的函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 避免在滚动时过分的更新定位</span><br><span class="line">$(window).on(&quot;scroll&quot;, _.throttle(updatePosition, 500));</span><br><span class="line">function updatePosition() &#123;</span><br><span class="line">  // 假装在更新定位</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line">//   点击后就调用 renewToken， 但 5 分钟内超过一次</span><br><span class="line">var throttled = _.throttle(renewToken, 300000, &#123; trailing: false &#125;);</span><br><span class="line">$(ele).on(&quot;click&quot;, throttled);</span><br><span class="line">// 取消一个 trailing 的节流调用</span><br><span class="line">$(window).on(&quot;popstate&quot;, throttled.cancel);</span><br><span class="line">function renewToken() &#123;</span><br><span class="line">  // 假装在请求更新 token</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 避免在滚动时过分的更新定位</span><br><span class="line">$(window).on(&quot;scroll&quot;, _.throttle(updatePosition, 500));</span><br><span class="line">function updatePosition() &#123;</span><br><span class="line">  &#x2F;&#x2F; 假装在更新定位</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;   点击后就调用 renewToken， 但 5 分钟内超过一次</span><br><span class="line">var throttled &#x3D; _.throttle(renewToken, 300000, &#123; trailing: false &#125;);</span><br><span class="line">$(ele).on(&quot;click&quot;, throttled);</span><br><span class="line">&#x2F;&#x2F; 取消一个 trailing 的节流调用</span><br><span class="line">$(window).on(&quot;popstate&quot;, throttled.cancel);</span><br><span class="line">function renewToken() &#123;</span><br><span class="line">  &#x2F;&#x2F; 假装在请求更新 token</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>_.debounce() 和 _.throttle() 的 api 介绍和使用方法取自官网，加了一点修饰。</p>
 <h3 id="防抖和节流的区别"><a href="#防抖和节流的区别" class="headerlink" title="防抖和节流的区别"></a>防抖和节流的区别</h3><h4 id="防抖"><a href="#防抖" class="headerlink" title="防抖:"></a>防抖:</h4><p>把突然爆发的事件(比如点击事件)组合成一个单一的事件。<br>场景应用：</p>
 <ul>
@@ -254,7 +257,7 @@
 </ul>
 <p>防抖和节流的区别总结和翻译自下面这篇文章，更多详细信息可访问<br><a href="https://css-tricks.com/debouncing-throttling-explained-examples/" target="_blank" rel="noopener"> David Corbacho’s article</a> 查看 _.debounce 函数防抖和 _.throttle 函数节流的区别</p>
 <h3 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h3><p>如果你只需要防抖和节流函数，您可以使用 Lodash 自定义构建器输出一个自定义的 2KB 最小化库。 用下面这个简单的命令构建它:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -g lodash-cli</span><br><span class="line">lodash include = debounce, throttle</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -g lodash-cli</span><br><span class="line">lodash include &#x3D; debounce, throttle</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -264,7 +267,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/lodash/" rel="tag"># lodash</a>
+              <a href="/tags/Lodash/" rel="tag"># Lodash</a>
           </div>
 
         
@@ -273,12 +276,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/05/12. 数组方法之 reduce/" rel="prev" title="数组方法之reduce()">
-      <i class="fa fa-chevron-left"></i> 数组方法之reduce()
+    <a href="/2020/04/05/12.%20%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E4%B9%8B%20reduce/" rel="prev" title="数组方法之 reduce()">
+      <i class="fa fa-chevron-left"></i> 数组方法之 reduce()
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/06/14. 使用 vue-cli 创建项目时，vue 的 'runtime-only' 是什么意思？/" rel="next" title="使用 vue-cli 创建项目时，vue 的 'runtime-only' 是什么意思？">
-      使用 vue-cli 创建项目时，vue 的 'runtime-only' 是什么意思？ <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/06/14.%20%E4%BD%BF%E7%94%A8%20Vue-cli%20%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%97%B6%EF%BC%8CVue%20%E7%9A%84%20'runtime-only'%20%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F/" rel="next" title="使用 Vue-cli 创建项目时，Vue 的 'runtime-only' 是什么意思？">
+      使用 Vue-cli 创建项目时，Vue 的 'runtime-only' 是什么意思？ <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -344,8 +347,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">YACHU</p>
-  <div class="site-description" itemprop="description">书犹药也，善读之可以医愚。— — (汉)刘向</div>
+  <p class="site-author-name" itemprop="name">皇甫文豪</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -357,14 +360,12 @@
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
         <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -394,9 +395,9 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">YACHU</span>
+  <span class="author" itemprop="copyrightHolder">皇甫文豪</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -416,9 +417,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
