@@ -152,6 +152,91 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/22.%20JavaScript%20%E6%95%B0%E5%AD%97%E6%96%B9%E6%B3%95%E3%80%81%E6%AD%A3%E5%88%99%E6%96%B9%E6%B3%95%E4%B8%8E%E5%85%A8%E5%B1%80%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="皇甫文豪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江上之清风，山间之明月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/26/22.%20JavaScript%20%E6%95%B0%E5%AD%97%E6%96%B9%E6%B3%95%E3%80%81%E6%AD%A3%E5%88%99%E6%96%B9%E6%B3%95%E4%B8%8E%E5%85%A8%E5%B1%80%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">JavaScript 数字方法、正则方法与全局方法(部分)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-26 00:05:00 / 修改时间：00:09:39" itemprop="dateCreated datePublished" datetime="2020-04-26T00:05:00+08:00">2020-04-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一、Number-方法"><a href="#一、Number-方法" class="headerlink" title="一、Number 方法"></a>一、Number 方法</h3><h4 id="num-toString-radix"><a href="#num-toString-radix" class="headerlink" title="num.toString(radix)"></a>num.toString(radix)</h4><p>释义：将数字转为字符串，并返回处理结果。<br>参数：radix: 可选，数字基数（进制），默认为十进制。<br>eg: 如果 radi 为 2, 则数字会被转为二进制字符串。</p>
+<h4 id="num-toFixed-n"><a href="#num-toFixed-n" class="headerlink" title="num.toFixed(n)"></a>num.toFixed(n)</h4><p>释义：将数字四舍五入为指定位数的数字字符串，并返回处理结果。<br>参数：n: 必选，小数位数，为 0 - 20 之间的数字，包括 0 和 20。如果省略了该参数，则默认为 0。</p>
+<h3 id="二、正则方法"><a href="#二、正则方法" class="headerlink" title="二、正则方法"></a>二、正则方法</h3><h4 id="reg-test-str"><a href="#reg-test-str" class="headerlink" title="reg.test(str)"></a>reg.test(str)</h4><p>释义：检测一个字符串是否负责正则表达式的规则。返回 true 或 false。</p>
+<h4 id="reg-exec-str"><a href="#reg-exec-str" class="headerlink" title="reg.exec(str)"></a>reg.exec(str)</h4><p>释义：查找字符串中正则表达式的匹配。<br>返回值：返回匹配结果的数组。未找到匹配结果则返回 null。<br>数组中第一个元素是匹配结果，除了数组元素和 length 属性，返回的数组同时具有 index 和 input 属性，index: 表示匹配结果的位置， input 表示源字符串。<br>当正则表达式具有全局标志时，exec 检索会从 reg.lastIndex 属性开始，默认为 0，有匹配结果时，会将 lastIndex 设置为匹配结果的位置的下一位，没有匹配时重置为 0。<br>注意：如果完成一次匹配后，要检索别的字符串，则需要将 lastIndex 手动重置为 0。</p>
+<h4 id="支持正则的字符串方法"><a href="#支持正则的字符串方法" class="headerlink" title="支持正则的字符串方法"></a>支持正则的字符串方法</h4><h4 id="str-replace-regexp-str，replaceStr-replaceFn"><a href="#str-replace-regexp-str，replaceStr-replaceFn" class="headerlink" title="str.replace(regexp/str，replaceStr/replaceFn)"></a>str.replace(regexp/str，replaceStr/replaceFn)</h4><p>字符串替换，返回新的字符串。<br>默认只匹配和替换一次。如果是正则有全局标志 g, 则替换匹配的所有字符串。<br><a href="https://www.w3school.com.cn/jsref/jsref_replace.asp" target="_blank" rel="noopener">w3school 之字符串的 replace 方法</a></p>
+<h4 id="str-match-regexp-str"><a href="#str-match-regexp-str" class="headerlink" title="str.match(regexp/str)"></a>str.match(regexp/str)</h4><p>在字符串中查找指定的值并返回匹配到的值。<br>如果没有匹配的值则返回 null, 否则返回数组。<br>参数可以是 regexp 正则表达式或者 str 具体的字符串。<br>当参数是正则时，如果没有全局标志 g, 则只匹配一次，如果有全局标志 g 则匹配多次。<br>当全局匹配时，返回的数组包含所有的匹配项。<br>当不是全局匹配时（没有 g）,则返回的数组只有第一次的匹配项，同时具有 index 属性保存了匹配项的索引，input 属性保存了调用 match 方法的源字符串。</p>
+<h4 id="str-split-separator-howmany"><a href="#str-split-separator-howmany" class="headerlink" title="str.split(separator,howmany)"></a>str.split(separator,howmany)</h4><p>将字符串以某个分割符分割成数组，返回分割完成的字符串数组。<br>如果以数组中不存在的字符分割，会把字符串整体放进数组中。<br>参数：</p>
+<ul>
+<li>separator ：分割符或正则</li>
+<li>howmany：返回数组的最大长度<br>注意：如果把空字符串 (“”) 用作 separator（分割符），那么字符串中的每个字符之间都会被分割。<br>对应数组的 arr.join() 方法。</li>
+</ul>
+<h4 id="str-search-str-reg"><a href="#str-search-str-reg" class="headerlink" title="str.search(str/reg)"></a>str.search(str/reg)</h4><p>释义：检索字符串中指定的子字符串，或者检索与正则表达式匹配的子字符串。如果要忽略大小写，可追加标志 i。<br>返回值：返回第一个匹配结果的子字符串的起始位置，没有匹配返回 -1。<br>注意：不执行全局匹配，会忽略全局标志 g，同时忽略 reg 的 lastIndex 属性。</p>
+<h3 id="三、JavaScript-全局方法（全局函数）"><a href="#三、JavaScript-全局方法（全局函数）" class="headerlink" title="三、JavaScript 全局方法（全局函数）"></a>三、JavaScript 全局方法（全局函数）</h3><h4 id="parseInt-str-radix"><a href="#parseInt-str-radix" class="headerlink" title="parseInt(str, radix)"></a>parseInt(str, radix)</h4><p>释义：从左向右解析，遇到非数字结束，如果第一个不能被转为数字直接返回 NaN。<br>返回值：整数或者 NaN。<br>参数 radix 表示 2 - 36 数字基数，radix 小于 2 或大于 36 直接返回 NaN。如果省略该参数或者值为 0，则根据 str 判断解析基数。0x 开头解析为十六进制，1-9 开头解析为十进制，0 开头解析为八或十六进制。<br>说明：允许开头和结尾的空格。</p>
+<h4 id="parseFloat-str"><a href="#parseFloat-str" class="headerlink" title="parseFloat(str)"></a>parseFloat(str)</h4><p>释义：从左向右解析字符串，会解析遇到的第一个 . ，遇到第二个 . 或者非数字结束，如果第一个不能被转为数字直接返回 NaN。<br>返回值：浮点数或者 NaN。<br>说明：允许开头和结尾的空格。</p>
+<h4 id="isNaN-x"><a href="#isNaN-x" class="headerlink" title="isNaN(x)"></a>isNaN(x)</h4><p>释义：用于判断一个参数是不是非数字。<br>返回值：如果参数 x 是一个非数字（NaN，或者可以转为 NaN）则 返回 true，如果是有效的数字，则返回 false。<br>说明：一般用于判断 parseInt() 和 parseFloat() 的返回结果，或者检测计算结果，比如用了 0 做除数。</p>
+<h4 id="eval-str"><a href="#eval-str" class="headerlink" title="eval(str)"></a>eval(str)</h4><p>释义：计算字符串，并执行其中的 JavaScript 代码。返回计算结果。<br>注意：只接收原始字符串作为参数，如果传递 string 对象，则原样返回。</p>
+<h4 id="encodeURIComponent"><a href="#encodeURIComponent" class="headerlink" title="encodeURIComponent()"></a>encodeURIComponent()</h4><p>释义：对 URI 字符串进行编码，并将结果返回。</p>
+<h4 id="decodeURIComponent"><a href="#decodeURIComponent" class="headerlink" title="decodeURIComponent()"></a>decodeURIComponent()</h4><p>释义：解码 encodeURIComponent() 编码的 URI 字符串，并将结果返回。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/21.%20JavaScript%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95%E6%95%B4%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -166,7 +251,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/20/21.%20JavaScript%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">javascript 字符串方法整理'</a>
+            <a href="/2020/04/20/21.%20JavaScript%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">javascript 字符串方法整理</a>
         </h2>
 
         <div class="post-meta">
@@ -175,10 +260,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-20 00:22:18 / 修改时间：22:49:58" itemprop="dateCreated datePublished" datetime="2020-04-20T00:22:18+08:00">2020-04-20</time>
+              <time title="创建时间：2020-04-20 00:22:18" itemprop="dateCreated datePublished" datetime="2020-04-20T00:22:18+08:00">2020-04-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-26 00:02:30" itemprop="dateModified" datetime="2020-04-26T00:02:30+08:00">2020-04-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -903,88 +994,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/05/12.%20%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E4%B9%8B%20reduce/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="皇甫文豪">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江上之清风，山间之明月">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/05/12.%20%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E4%B9%8B%20reduce/" class="post-title-link" itemprop="url">数组方法之 reduce()</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-05 01:50:09" itemprop="dateCreated datePublished" datetime="2020-04-05T01:50:09+08:00">2020-04-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 21:15:18" itemprop="dateModified" datetime="2020-04-19T21:15:18+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>reduce() 方法对数组的每个元素依次执行自定义回调函数，返回值为回调函数 return 的处理结果。<br>先看一个示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const arr &#x3D; [1, 2, 3, 4];</span><br><span class="line">const reduceFn &#x3D; (accumulator, currentVal) &#x3D;&gt; accumulator + currentVal;</span><br><span class="line">console.log(arr.reduce(reduceFn));&#x2F;&#x2F; 10</span><br><span class="line">console.log(arr.reduce(reduceFn, 5));&#x2F;&#x2F; 15</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/05/12.%20%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E4%B9%8B%20reduce/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1054,7 +1063,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

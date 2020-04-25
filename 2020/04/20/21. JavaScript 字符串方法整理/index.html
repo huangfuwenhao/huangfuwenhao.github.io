@@ -22,13 +22,13 @@
 
   <meta name="description" content="1. str.charAt(index)根据下标获取字符串中的字符，返回获取的字符。注意：如果 index 不存在，返回空字符串。 2. str[index]和 chartAt() 等效，HTML5,IE8+ 支持。 3. str.concat(str1, str2, …, strX)将多个字符串拼接成一个字符串，返回拼接完成的字符串。作用和 + 相同，+ 更常用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript 字符串方法整理&#39;">
+<meta property="og:title" content="javascript 字符串方法整理">
 <meta property="og:url" content="http://yoursite.com/2020/04/20/21.%20JavaScript%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="江上之清风，山间之明月">
 <meta property="og:description" content="1. str.charAt(index)根据下标获取字符串中的字符，返回获取的字符。注意：如果 index 不存在，返回空字符串。 2. str[index]和 chartAt() 等效，HTML5,IE8+ 支持。 3. str.concat(str1, str2, …, strX)将多个字符串拼接成一个字符串，返回拼接完成的字符串。作用和 + 相同，+ 更常用。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-19T16:22:18.000Z">
-<meta property="article:modified_time" content="2020-04-20T14:49:58.342Z">
+<meta property="article:modified_time" content="2020-04-25T16:02:30.429Z">
 <meta property="article:author" content="皇甫文豪">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>javascript 字符串方法整理' | 江上之清风，山间之明月</title>
+  <title>javascript 字符串方法整理 | 江上之清风，山间之明月</title>
   
 
 
@@ -165,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          javascript 字符串方法整理'
+          javascript 字符串方法整理
         </h1>
 
         <div class="post-meta">
@@ -174,10 +174,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-20 00:22:18 / 修改时间：22:49:58" itemprop="dateCreated datePublished" datetime="2020-04-20T00:22:18+08:00">2020-04-20</time>
+              <time title="创建时间：2020-04-20 00:22:18" itemprop="dateCreated datePublished" datetime="2020-04-20T00:22:18+08:00">2020-04-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-26 00:02:30" itemprop="dateModified" datetime="2020-04-26T00:02:30+08:00">2020-04-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -227,6 +233,7 @@
 <h4 id="20-str-padStart-length-str"><a href="#20-str-padStart-length-str" class="headerlink" title="20. str.padStart(length[, str])"></a>20. str.padStart(length[, str])</h4><p>字符串头部补全。<br>length：需要补全的目标长度，如果小于字符串当前的长度，则返回字符串本身。<br>str: 可选，填充字符串，缺省值为 “ “，如果超过目标长度，只保留最左侧部分。</p>
 <h4 id="21-str-padEnd-length-str"><a href="#21-str-padEnd-length-str" class="headerlink" title="21. str.padEnd(length[, str])"></a>21. str.padEnd(length[, str])</h4><p>字符串尾部补全。<br>length：需要补全的目标长度，如果小于字符串当前的长度，则返回字符串本身。<br>str: 可选，填充字符串，缺省值为 “ “，如果超过目标长度，只保留最左侧部分。</p>
 <h4 id="22-str-match-regexp-str"><a href="#22-str-match-regexp-str" class="headerlink" title="22. str.match(regexp/str)"></a>22. str.match(regexp/str)</h4><p>在字符串中查找指定的值并返回匹配到的值。<br>如果没有匹配的值则返回 null, 否则返回数组。<br>参数可以是 regexp 正则表达式或者 str 具体的字符串。<br>当参数是正则时，如果没有全局标志 g, 则只匹配一次，如果有全局标志 g 则匹配多次。<br>当全局匹配时，返回的数组包含所有的匹配项。<br>当不是全局匹配时（没有 g）,则返回的数组只有第一次的匹配项，同时具有 index 属性保存了匹配项的索引，input 属性保存了调用 match 方法的源字符串。</p>
+<h4 id="23-str-search-str-reg"><a href="#23-str-search-str-reg" class="headerlink" title="23.str.search(str/reg)"></a>23.str.search(str/reg)</h4><p>释义：检索字符串中指定的子字符串，或者检索与正则表达式匹配的子字符串。如果要忽略大小写，可追加标志 i。<br>返回值：返回第一个匹配结果的子字符串的起始位置，没有匹配返回 -1。<br>注意：不执行全局匹配，会忽略全局标志 g，同时忽略 reg 的 lastIndex 属性。</p>
 <h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><ol>
 <li>字符串等基本类型数据的值在内存中是不可变的，给字符串重新赋值会和新建字符串一样，都会在内存中开辟新的空间。</li>
 <li>可以通过下标获取指定位置的字符，但不能修改。（字符串不可变）</li>
@@ -253,7 +260,10 @@
     <a href="/2020/04/18/20.%20%E8%AE%B0%E4%B8%80%E6%AC%A1%20bug%EF%BC%9AVue%20%E4%B8%AD%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4%E6%97%B6%E6%90%BA%E5%B8%A6%E4%B8%8D%E4%B8%8A%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE/" rel="prev" title="记一次 bug : Vue 中表单提交时携带不上文件数据">
       <i class="fa fa-chevron-left"></i> 记一次 bug : Vue 中表单提交时携带不上文件数据
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/26/22.%20JavaScript%20%E6%95%B0%E5%AD%97%E6%96%B9%E6%B3%95%E3%80%81%E6%AD%A3%E5%88%99%E6%96%B9%E6%B3%95%E4%B8%8E%E5%85%A8%E5%B1%80%E6%96%B9%E6%B3%95/" rel="next" title="JavaScript 数字方法、正则方法与全局方法(部分)">
+      JavaScript 数字方法、正则方法与全局方法(部分) <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -312,7 +322,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-str-charAt-index"><span class="nav-number">1.</span> <span class="nav-text">1. str.charAt(index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-str-index"><span class="nav-number">2.</span> <span class="nav-text">2. str[index]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-str-concat-str1-str2-…-strX"><span class="nav-number">3.</span> <span class="nav-text">3. str.concat(str1, str2, …, strX)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-str-slice-start-end"><span class="nav-number">4.</span> <span class="nav-text">4. str.slice(start, end)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-str-substring-start-end"><span class="nav-number">5.</span> <span class="nav-text">5. str.substring(start, end)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-str-substr-start-length"><span class="nav-number">6.</span> <span class="nav-text">6. str.substr(start, length)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-str-indexOf-val-index"><span class="nav-number">7.</span> <span class="nav-text">7.str.indexOf(val, index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-str-lastIndexOf-val-index"><span class="nav-number">8.</span> <span class="nav-text">8.str.lastIndexOf(val, index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-str-trim"><span class="nav-number">9.</span> <span class="nav-text">9. str.trim()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-str-toUpperCase"><span class="nav-number">10.</span> <span class="nav-text">10.str.toUpperCase()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-str-toLowerCase"><span class="nav-number">11.</span> <span class="nav-text">11.str.toLowerCase()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-str-replace-regexp-str，replaceStr-replaceFn"><span class="nav-number">12.</span> <span class="nav-text">12.str.replace(regexp&#x2F;str，replaceStr&#x2F;replaceFn)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-str-split-separator-howmany"><span class="nav-number">13.</span> <span class="nav-text">13. str.split(separator,howmany)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-str-charCodeAt-index"><span class="nav-number">14.</span> <span class="nav-text">14. str.charCodeAt(index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-String-fromCharCode-Unicode1-Unicode2-…-UnicodeX"><span class="nav-number">15.</span> <span class="nav-text">15. String.fromCharCode(Unicode1, Unicode2, …, UnicodeX)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-str-includes-str-index"><span class="nav-number">16.</span> <span class="nav-text">16. str.includes(str[, index])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-str-startsWith-str-length"><span class="nav-number">17.</span> <span class="nav-text">17. str.startsWith(str[, length])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-str-endsWith-str-length"><span class="nav-number">18.</span> <span class="nav-text">18. str.endsWith(str[, length])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-str-repeat-n"><span class="nav-number">19.</span> <span class="nav-text">19. str.repeat(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-str-padStart-length-str"><span class="nav-number">20.</span> <span class="nav-text">20. str.padStart(length[, str])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-str-padEnd-length-str"><span class="nav-number">21.</span> <span class="nav-text">21. str.padEnd(length[, str])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-str-match-regexp-str"><span class="nav-number">22.</span> <span class="nav-text">22. str.match(regexp&#x2F;str)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tips"><span class="nav-number">23.</span> <span class="nav-text">tips</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-str-charAt-index"><span class="nav-number">1.</span> <span class="nav-text">1. str.charAt(index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-str-index"><span class="nav-number">2.</span> <span class="nav-text">2. str[index]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-str-concat-str1-str2-…-strX"><span class="nav-number">3.</span> <span class="nav-text">3. str.concat(str1, str2, …, strX)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-str-slice-start-end"><span class="nav-number">4.</span> <span class="nav-text">4. str.slice(start, end)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-str-substring-start-end"><span class="nav-number">5.</span> <span class="nav-text">5. str.substring(start, end)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-str-substr-start-length"><span class="nav-number">6.</span> <span class="nav-text">6. str.substr(start, length)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-str-indexOf-val-index"><span class="nav-number">7.</span> <span class="nav-text">7.str.indexOf(val, index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-str-lastIndexOf-val-index"><span class="nav-number">8.</span> <span class="nav-text">8.str.lastIndexOf(val, index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-str-trim"><span class="nav-number">9.</span> <span class="nav-text">9. str.trim()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-str-toUpperCase"><span class="nav-number">10.</span> <span class="nav-text">10.str.toUpperCase()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-str-toLowerCase"><span class="nav-number">11.</span> <span class="nav-text">11.str.toLowerCase()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-str-replace-regexp-str，replaceStr-replaceFn"><span class="nav-number">12.</span> <span class="nav-text">12.str.replace(regexp&#x2F;str，replaceStr&#x2F;replaceFn)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-str-split-separator-howmany"><span class="nav-number">13.</span> <span class="nav-text">13. str.split(separator,howmany)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-str-charCodeAt-index"><span class="nav-number">14.</span> <span class="nav-text">14. str.charCodeAt(index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-String-fromCharCode-Unicode1-Unicode2-…-UnicodeX"><span class="nav-number">15.</span> <span class="nav-text">15. String.fromCharCode(Unicode1, Unicode2, …, UnicodeX)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-str-includes-str-index"><span class="nav-number">16.</span> <span class="nav-text">16. str.includes(str[, index])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-str-startsWith-str-length"><span class="nav-number">17.</span> <span class="nav-text">17. str.startsWith(str[, length])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-str-endsWith-str-length"><span class="nav-number">18.</span> <span class="nav-text">18. str.endsWith(str[, length])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-str-repeat-n"><span class="nav-number">19.</span> <span class="nav-text">19. str.repeat(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-str-padStart-length-str"><span class="nav-number">20.</span> <span class="nav-text">20. str.padStart(length[, str])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-str-padEnd-length-str"><span class="nav-number">21.</span> <span class="nav-text">21. str.padEnd(length[, str])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-str-match-regexp-str"><span class="nav-number">22.</span> <span class="nav-text">22. str.match(regexp&#x2F;str)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#23-str-search-str-reg"><span class="nav-number">23.</span> <span class="nav-text">23.str.search(str&#x2F;reg)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tips"><span class="nav-number">24.</span> <span class="nav-text">tips</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -326,7 +336,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
